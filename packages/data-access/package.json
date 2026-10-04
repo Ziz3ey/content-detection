@@ -1,0 +1,17 @@
+{
+  "name": "content-detection-data-access",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SQLite data access layer untuk hasil pemeriksaan microservices.",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "db:init": "node src/cli.js init",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "better-sqlite3": "^13.0.3"
+  }
+}

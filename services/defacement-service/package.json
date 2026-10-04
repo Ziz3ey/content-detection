@@ -1,0 +1,17 @@
+{
+  "name": "defacement-service",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Prototype REST service untuk indikasi perubahan konten halaman dari baseline.",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0"
+  }
+}

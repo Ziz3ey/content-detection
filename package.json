@@ -1,0 +1,15 @@
+{
+  "name": "content-detection",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Inisialisasi proyek deteksi indikasi konten negatif berbasis microservices.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

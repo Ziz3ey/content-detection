@@ -1,0 +1,17 @@
+{
+  "name": "aggregator-service",
+  "version": "1.0.0",
+  "private": true,
+  "description": "REST API untuk mengorkestrasi hasil microservices deteksi.",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "content-detection-data-access": "file:../../packages/data-access"
+  }
+}
