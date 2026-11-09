@@ -209,10 +209,12 @@ before(async () => {
       return;
     }
 
-    const html =
-      request.url === "/second"
-        ? "<title>Second Fixture</title><p>beta</p>"
-        : '<html><head><title>Integration Fixture</title></head><body><p>alpha</p><a href="/second">Next</a></body></html>';
+   const html =
+  request.url === "/second"
+    ? "<title>Second Fixture</title><p>beta</p>"
+    : request.url === "/page"
+      ? '<html><head><title>Integration Fixture</title></head><body><p>judi online</p><a href="/second">Next</a></body></html>'
+      : '<html><head><title>Integration Fixture</title></head><body><p>alpha</p><a href="/second">Next</a></body></html>';
     response.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
     response.end(html);
   });
@@ -235,8 +237,8 @@ after(async () => {
 test("posts extracted text and preserves a detected=false response", async () => {
   const pages = await runFixtureCrawl();
 
-  assert.equal(pages[0].text, "alpha Next");
-  assert.deepEqual(detectionRequests, [{ text: "alpha Next" }]);
+  assert.equal(pages[0].text, "judi online Next");
+assert.deepEqual(detectionRequests, [{ text: "judi online Next" }]);
   assert.deepEqual(pages[0].detection, {
     success: true,
     data: { detected: false, categories: [] },
@@ -289,8 +291,8 @@ test("maps Text Detection timeout and continues to the next page", async () => {
   assert.equal(pages[0].detection.error.code, "TEXT_DETECTION_TIMEOUT");
   assert.equal(pages[1].url, `${websiteUrl}/second`);
   assert.equal(pages[1].detection.success, true);
-  assert.deepEqual(detectionRequests, [
-    { text: "alpha Next" },
+    assert.deepEqual(detectionRequests, [
+    { text: "judi online Next" },
     { text: "beta" },
   ]);
 });
@@ -394,14 +396,17 @@ test("end-to-end: local crawler sends fixture text to the real Text Detection Se
     });
     const pages = JSON.parse(result.stdout);
 
-    assert.equal(result.exitCode, 0, result.stderr);
-    assert.equal(pages[0].text, "alpha Next");
+        assert.equal(result.exitCode, 0, result.stderr);
+    assert.equal(pages[0].text, "judi online Next");
     assert.equal(pages[0].detection.success, true);
     assert.equal(pages[0].detection.data.detected, true);
     assert.deepEqual(pages[0].detection.data.categories, [
       {
         category: "gambling",
-        matches: [{ pattern: "alpha", start: 0, end: 4 }],
+        matches: [
+          { pattern: "judi", start: 0, end: 3 },
+          { pattern: "judi online", start: 0, end: 10 },
+        ],
       },
     ]);
   } finally {

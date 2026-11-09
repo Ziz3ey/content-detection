@@ -21,6 +21,16 @@ const requests = {
 };
 const linkRequestModes = new Map();
 const logger = { info() {}, warn() {}, error() {} };
+const testAuth = {
+  authenticate: () => ({ username: "test-admin" }),
+  authenticateCredentials: () => true,
+  createSession: () => ({
+    token: "a".repeat(64),
+    cookie: "content_detection_session=test",
+  }),
+  revokeSession() {},
+  clearCookie: "content_detection_session=; Max-Age=0",
+};
 let downstreamServers;
 let aggregatorServer;
 let config;
@@ -221,10 +231,12 @@ before(async () => {
     DEFACEMENT_SERVICE_TIMEOUT_MS: "500",
     LINK_DETECTION_SERVICE_URL: serviceUrls.linkDetection,
     LINK_DETECTION_SERVICE_TIMEOUT_MS: "500",
+    ADMIN_USERNAME: "test-admin",
+    ADMIN_PASSWORD_HASH: `scrypt$${"a".repeat(32)}$${"b".repeat(128)}`,
   });
   dataAccess = createDataAccess(config.databasePath);
 
-  const running = createApp({ config, logger, dataAccess }).listen(
+  const running = createApp({ config, logger, dataAccess, auth: testAuth }).listen(
     0,
     "127.0.0.1",
   );
@@ -271,8 +283,12 @@ test("allows the configured dashboard origin and preflights JSON API requests", 
   assert.equal(preflight.status, 204);
   assert.equal(preflight.headers.get("access-control-allow-origin"), origin);
   assert.equal(
+    preflight.headers.get("access-control-allow-credentials"),
+    "true",
+  );
+  assert.equal(
     preflight.headers.get("access-control-allow-methods"),
-    "GET, POST, OPTIONS",
+    "GET, POST, DELETE, OPTIONS",
   );
   assert.equal(
     preflight.headers.get("access-control-allow-headers"),
@@ -290,6 +306,7 @@ test("allows the configured dashboard origin and preflights JSON API requests", 
   const otherOrigin = await fetch(`${baseUrl}/health`, {
     headers: { Origin: "http://other.example" },
   });
+  assert.equal(otherOrigin.status, 200);
   assert.equal(otherOrigin.headers.get("access-control-allow-origin"), null);
 });
 
@@ -478,6 +495,7 @@ test("maps downstream timeout to a per-service timeout result", async () => {
     config: timeoutConfig,
     logger,
     dataAccess,
+    auth: testAuth,
   }).listen(0, "127.0.0.1");
   await once(timeoutServer, "listening");
 
@@ -531,6 +549,8 @@ test("maps malformed and structurally invalid downstream responses to errors", a
 test("loads downstream URL and timeout configuration from environment", () => {
   const configured = loadAggregatorConfig({
     DASHBOARD_ORIGIN: "https://dashboard.example/",
+    ADMIN_USERNAME: "test-admin",
+    ADMIN_PASSWORD_HASH: `scrypt$${"a".repeat(32)}$${"b".repeat(128)}`,
     CRAWLER_SERVICE_URL: "http://127.0.0.1:4000",
     CRAWLER_TIMEOUT_MS: "1100",
     TEXT_DETECTION_URL: "http://127.0.0.1:4001",
@@ -542,6 +562,8 @@ test("loads downstream URL and timeout configuration from environment", () => {
   });
 
   assert.equal(configured.dashboardOrigin, "https://dashboard.example");
+  assert.equal(configured.auth.username, "test-admin");
+  assert.equal(configured.auth.secureCookie, false);
   assert.deepEqual(configured.services, {
     textDetection: { url: "http://127.0.0.1:4001", timeoutMs: 1200 },
     crawler: { url: "http://127.0.0.1:4000", timeoutMs: 1100 },

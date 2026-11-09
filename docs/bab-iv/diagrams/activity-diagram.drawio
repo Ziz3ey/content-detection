@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" agent="Antigravity-Academic" version="24.0.0" type="device">
+  <diagram id="diag_activity_diagram" name="activity-diagram">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1160" pageHeight="1060" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="ACTIVITY DIAGRAM ALUR PEMINDAIAN DAN DETEKSI INDIKASI KONTEN NEGATIF
+(PEMERINTAH KABUPATEN SUMBAWA)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="150" y="15" width="850" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane1" value="Petugas CSIRT / Admin" style="swimlane;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#f8f8f8;fontColor=#000000;fontFamily=Arial;fontSize=11;fontStyle=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="50" y="70" width="240" height="960" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane2" value="Aggregator Service &amp; Dashboard" style="swimlane;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#f8f8f8;fontColor=#000000;fontFamily=Arial;fontSize=11;fontStyle=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="290" y="70" width="270" height="960" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane3" value="Worker &amp; Detection Services" style="swimlane;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#f8f8f8;fontColor=#000000;fontFamily=Arial;fontSize=11;fontStyle=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="560" y="70" width="310" height="960" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane4" value="Database (SQLite) &amp; SMTP" style="swimlane;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#f8f8f8;fontColor=#000000;fontFamily=Arial;fontSize=11;fontStyle=1;startSize=30;" vertex="1" parent="1">
+          <mxGeometry x="870" y="70" width="240" height="960" as="geometry"/>
+        </mxCell>
+        <mxCell id="init_node" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="lane1">
+          <mxGeometry x="105" y="45" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_access" value="Mengakses Antarmuka
+Sistem Pemantauan" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="lane1">
+          <mxGeometry x="40" y="100" width="160" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_show_login" value="Menampilkan Halaman
+Login Administrator" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="lane2">
+          <mxGeometry x="50" y="100" width="170" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_input_cred" value="Memasukkan Nama Pengguna
+dan Kata Sandi" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="lane1">
+          <mxGeometry x="40" y="170" width="160" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_verify_cred" value="Verifikasi Hash Scrypt &amp;
+Validasi Autentikasi" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="lane2">
+          <mxGeometry x="50" y="170" width="170" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="dec_auth" value="Kredensial
+Valid?" style="rhombus;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="lane2">
+          <mxGeometry x="95" y="235" width="80" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_auth_err" value="Tampilkan Kesalahan
+Login" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="lane2">
+          <mxGeometry x="185" y="240" width="80" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_show_dash" value="Menampilkan Dashboard Utama
+dan Formulir Pemindaian" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="lane2">
+          <mxGeometry x="45" y="305" width="180" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_input_scan" value="Memasukkan URL Target,
+Kedalaman, &amp; Email Petugas" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="lane1">
+          <mxGeometry x="35" y="375" width="170" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_val_input" value="Validasi Parameter &amp;
+Sintaks Email (RFC 5322)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="lane2">
+          <mxGeometry x="45" y="375" width="180" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_init_job" value="Buat Job Pemindaian
+(Status: running)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="lane4">
+          <mxGeometry x="35" y="375" width="170" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_crawl" value="Crawler Service: Ambil robots.txt,
+Unduh HTML, Ekstraksi BFS" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="lane3">
+          <mxGeometry x="40" y="440" width="230" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="fork_bar" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="lane3">
+          <mxGeometry x="20" y="515" width="270" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_text" value="Deteksi Teks:
+Algoritma Aho-Corasick
+(Trie Kata Kunci Judol/Porn)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="lane3">
+          <mxGeometry x="15" y="545" width="130" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_link" value="Deteksi Tautan:
+Analisis Heuristik
+Domain Eksternal" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="lane3">
+          <mxGeometry x="155" y="545" width="135" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_def" value="Deteksi Defacement:
+Komparasi DOM &amp;
+Visual Hash Baseline" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="lane3">
+          <mxGeometry x="85" y="625" width="140" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="join_bar" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="lane3">
+          <mxGeometry x="20" y="700" width="270" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_aggregate" value="Aggregator: Mengumpulkan
+&amp; Merekapitulasi Temuan" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="lane2">
+          <mxGeometry x="45" y="725" width="180" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_save_db" value="Simpan Hasil Pemindaian ke
+Basis Data SQLite (scans)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="lane4">
+          <mxGeometry x="35" y="725" width="170" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_send_email" value="Kirim Laporan Email Hasil
+via SMTP Server Gmail" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="lane4">
+          <mxGeometry x="35" y="800" width="170" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_update_ui" value="Perbarui Dashboard &amp;
+Spanduk Konfirmasi Email" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="lane2">
+          <mxGeometry x="45" y="865" width="180" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="act_view_report" value="Melihat Detail Hasil &amp;
+Ekspor Laporan (PDF/CSV)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="lane1">
+          <mxGeometry x="35" y="865" width="170" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="final_node" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="lane1">
+          <mxGeometry x="105" y="940" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="init_node" target="act_access">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="act_access" target="act_show_login">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="act_show_login" target="act_input_cred">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="act_input_cred" target="act_verify_cred">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="act_verify_cred" target="dec_auth">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_5" value="TIDAK" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="dec_auth" target="act_auth_err">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="act_auth_err" target="act_input_cred">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_7" value="YA" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="dec_auth" target="act_show_dash">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="act_show_dash" target="act_input_scan">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="act_input_scan" target="act_val_input">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_10" value="Valid" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="act_val_input" target="act_init_job">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_11" value="Trigger" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="act_init_job" target="act_crawl">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="act_crawl" target="fork_bar">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="fork_bar" target="act_text">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="fork_bar" target="act_link">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="fork_bar" target="act_def">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="act_text" target="join_bar">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_17" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="act_link" target="join_bar">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_18" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="act_def" target="join_bar">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="join_bar" target="act_aggregate">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="act_aggregate" target="act_save_db">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_21" value="Selesai" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="act_save_db" target="act_send_email">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="act_send_email" target="act_update_ui">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="act_update_ui" target="act_view_report">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_act_24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="act_view_report" target="final_node">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

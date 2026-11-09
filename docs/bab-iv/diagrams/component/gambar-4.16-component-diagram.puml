@@ -1,0 +1,42 @@
+@startuml
+!theme plain
+skinparam componentStyle uml2
+
+package "Presentation Layer" {
+  component [Dashboard React Frontend
+(Port 5173)] as Dashboard
+}
+
+package "Orchestration & Business Layer" {
+  component [Aggregator Service
+(Port 3004)] as Aggregator
+  component [Data-Access Layer
+(better-sqlite3)] as DataAccess
+}
+
+package "Detection & Crawling Services" {
+  component [Crawler Service
+(Port 3001)] as Crawler
+  component [Text Detection Service
+(Port 3000 / Aho-Corasick)] as TextDet
+  component [Link Detection Service
+(Port 3003)] as LinkDet
+  component [Defacement Service
+(Port 3002)] as DefDet
+}
+
+database "SQLite Database
+(content_detection.db)" as DB
+cloud "External SMTP Server
+(smtp.gmail.com:587)" as SMTP
+
+Dashboard ..> Aggregator : REST API (JSON)
+Aggregator --> DataAccess : Method Calls
+DataAccess --> DB : SQL Queries
+Aggregator --> SMTP : Nodemailer (TLS)
+
+Aggregator ..> Crawler : HTTP POST /crawl
+Aggregator ..> TextDet : HTTP POST /detect/text
+Aggregator ..> LinkDet : HTTP POST /detect/links
+Aggregator ..> DefDet : HTTP POST /detect/defacement
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+!theme plain
+|Petugas CSIRT|
+start
+:Buka Menu Pemindaian;
+:Input URL, Kedalaman, Batas Halaman, & Email Petugas;
+:Klik 'Mulai Pemindaian';
+|Sistem|
+:Validasi Input & Format Email;
+if (Valid?) then (Ya)
+  :Generate Job ID di Database;
+  :Kirim Respon HTTP 202 Accepted;
+  fork
+    |Petugas CSIRT|
+    :Terima Notifikasi Job Berjalan;
+    :Dapat Menutup Browser/Laptop;
+  fork again
+    |Sistem|
+    :Jalankan Background Worker;
+    :Proses Crawling & Deteksi Paralel;
+    :Simpan Hasil ke SQLite;
+    :Kirim Email Laporan ke Petugas;
+  end fork
+  stop
+else (Tidak)
+  :Tampilkan Peringatan Validasi;
+  detach
+endif
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+!theme plain
+autonumber
+participant "Aggregator Worker" as Worker
+participant "Text Detection Service (:3000)" as TextSvc
+participant "Cheerio DOM Parser" as Parser
+participant "Aho-Corasick Trie Engine" as ACTrie
+
+Worker -> TextSvc: POST /detect/text { url, html, title }
+TextSvc -> Parser: Ekstrak Teks Terlihat, Meta Tag, & Alt/Title Gambar
+Parser --> TextSvc: Corpus Teks Hasil Ekstraksi
+TextSvc -> TextSvc: Normalisasi Huruf Kecil & Dekode Leet Speak
+TextSvc -> ACTrie: searchPatterns(normalizedText)
+ACTrie -> ACTrie: Traversal Multi-Pattern Tree Linier O(n + m)
+ACTrie --> TextSvc: Daftar Kata Kunci Cocok, Kategori, & Posisi Karakter
+TextSvc -> TextSvc: Hitung Akumulasi Bobot & Ambil Snippet Konteks
+TextSvc --> Worker: HTTP 200 OK { hasIndication, confidence, findings: [ ... ] }
+@enduml

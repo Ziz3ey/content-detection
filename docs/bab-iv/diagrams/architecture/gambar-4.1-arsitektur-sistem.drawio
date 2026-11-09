@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" agent="Antigravity-Academic" version="24.0.0" type="device">
+  <diagram id="diag_arsitektur_microservices" name="arsitektur-microservices">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="760" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="ARSITEKTUR SISTEM PEMANTAUAN DAN DETEKSI INDIKASI KONTEN NEGATIF
+BERBASIS MICROSERVICES" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="200" y="20" width="700" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="group_user" value="User &amp; Presentation Tier" style="swimlane;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#f8f8f8;fontColor=#000000;fontFamily=Arial;fontSize=11;fontStyle=1;startSize=25;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="980" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="actor_admin" value="Administrator /
+Petugas CSIRT" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;" vertex="1" parent="group_user">
+          <mxGeometry x="60" y="35" width="40" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="dashboard" value="Dashboard UI (React 18 + Vite)
+[Port: 5173]
+Single Page Application (SPA), Tailwind CSS, Chart.js" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=11;fontStyle=1;" vertex="1" parent="group_user">
+          <mxGeometry x="250" y="45" width="400" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="group_gateway" value="API Gateway &amp; Orchestration Tier" style="swimlane;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#f8f8f8;fontColor=#000000;fontFamily=Arial;fontSize=11;fontStyle=1;startSize=25;" vertex="1" parent="1">
+          <mxGeometry x="60" y="230" width="980" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="aggregator" value="Aggregator Service (Node.js &amp; Express)
+[Port: 3000]
+• API Gateway &amp; Scrypt Auth Session
+• Asynchronous Background Scan Worker (RFC 5322)
+• Result Aggregator &amp; Email Notification Coordinator" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=11;fontStyle=1;align=center;" vertex="1" parent="group_gateway">
+          <mxGeometry x="200" y="35" width="580" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="group_services" value="Microservices Detection Tier (Decoupled Services)" style="swimlane;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#f8f8f8;fontColor=#000000;fontFamily=Arial;fontSize=11;fontStyle=1;startSize=25;" vertex="1" parent="1">
+          <mxGeometry x="60" y="400" width="980" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="crawler_svc" value="Crawler Service
+[Port: 3001]
+Axios, Cheerio Parser,
+BFS Queue, robots.txt" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;align=center;" vertex="1" parent="group_services">
+          <mxGeometry x="30" y="45" width="210" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="text_svc" value="Text Detection Service
+[Port: 3002]
+Algoritma Aho-Corasick,
+Leet-speak, Trie Matcher" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;align=center;" vertex="1" parent="group_services">
+          <mxGeometry x="270" y="45" width="210" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="link_svc" value="Link Detection Service
+[Port: 3003]
+Suspicious URL Parser,
+External Domain Heuristics" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;align=center;" vertex="1" parent="group_services">
+          <mxGeometry x="510" y="45" width="210" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="defacement_svc" value="Defacement Service
+[Port: 3004]
+DOM Structural Hash,
+Baseline Image Comparator" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;align=center;" vertex="1" parent="group_services">
+          <mxGeometry x="750" y="45" width="200" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="group_external" value="Persistence &amp; External Services Tier" style="swimlane;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#f8f8f8;fontColor=#000000;fontFamily=Arial;fontSize=11;fontStyle=1;startSize=25;" vertex="1" parent="1">
+          <mxGeometry x="60" y="580" width="980" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="target_web" value="Situs Web Pemerintah
+Kabupaten Sumbawa
+(*.sumbawakab.go.id)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;align=center;" vertex="1" parent="group_external">
+          <mxGeometry x="30" y="45" width="210" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="data_pkg" value="Data Access Package
+(@content-detection/data-access)
+Scans, Jobs, Baselines" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;align=center;" vertex="1" parent="group_external">
+          <mxGeometry x="360" y="45" width="230" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="database" value="Basis Data SQLite
+(scans.db)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;align=center;" vertex="1" parent="group_external">
+          <mxGeometry x="620" y="45" width="120" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="smtp_server" value="SMTP Server (Gmail)
+[smtp.gmail.com:587]
+TLS / RFC 2822 Mail" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;align=center;" vertex="1" parent="group_external">
+          <mxGeometry x="770" y="45" width="180" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_admin_dash" value="HTTPS / Interaksi Web" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;endArrow=classic;endFill=1;" edge="1" parent="1" source="actor_admin" target="dashboard">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_dash_agg" value="REST API (JSON, Cookie HttpOnly) :3000" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;endArrow=classic;endFill=1;" edge="1" parent="1" source="dashboard" target="aggregator">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_agg_crawl" value="POST /api/v1/crawl" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;endArrow=classic;endFill=1;" edge="1" parent="1" source="aggregator" target="crawler_svc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="370"/>
+              <mxPoint x="165" y="370"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_agg_text" value="POST /api/v1/detect" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;endArrow=classic;endFill=1;" edge="1" parent="1" source="aggregator" target="text_svc">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_agg_link" value="POST /api/v1/detect" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;endArrow=classic;endFill=1;" edge="1" parent="1" source="aggregator" target="link_svc">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_agg_def" value="POST /api/v1/detect" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;endArrow=classic;endFill=1;" edge="1" parent="1" source="aggregator" target="defacement_svc">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="680" y="370"/>
+              <mxPoint x="850" y="370"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_crawl_target" value="HTTP GET / Web Crawling" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;endArrow=classic;endFill=1;" edge="1" parent="1" source="crawler_svc" target="target_web">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_agg_data" value="Persist Scans &amp; Jobs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;endArrow=classic;endFill=1;" edge="1" parent="1" source="aggregator" target="data_pkg">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="550" y="370"/>
+              <mxPoint x="475" y="370"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_data_db" value="Read/Write SQL" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;endArrow=classic;endFill=1;" edge="1" parent="1" source="data_pkg" target="database">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_agg_smtp" value="SMTP TLS Port 587" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;endArrow=classic;endFill=1;" edge="1" parent="1" source="aggregator" target="smtp_server">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="750" y="370"/>
+              <mxPoint x="860" y="370"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

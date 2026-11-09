@@ -1,0 +1,18 @@
+@startuml
+!theme plain
+start
+:Terima Konten HTML & Title Halaman;
+if (Baseline Tersedia di DB?) then (Ya)
+  :Hitung Hash SHA-256 DOM Saat Ini;
+  :Bandingkan Title & Struktur Tag;
+  if (Hash atau Title Berubah Signifikan?) then (Ya)
+    :Tandai Indikasi DEFACEMENT;
+  else (Tidak)
+    :Tandai Halaman UTUH (Unchanged);
+  endif
+else (Tidak)
+  :Kembalikan Status SKIPPED (NO_BASELINE);
+endif
+:Kirim Hasil ke Aggregator;
+stop
+@enduml

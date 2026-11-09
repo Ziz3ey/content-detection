@@ -1,0 +1,20 @@
+@startuml
+!theme plain
+start
+:Pemindaian Selesai;
+if (Email Petugas Terdaftar?) then (Ya)
+  :Set Penerima = Email Petugas Pemrakarsa;
+else (Tidak)
+  :Set Penerima = Fallback EMAIL_TO (.env);
+endif
+if (Ditemukan Indikasi Konten Negatif?) then (Ya)
+  :Pilih Template Merah [PERINGATAN];
+  :Lampirkan Tabel Rincian Indikasi;
+else (Tidak)
+  :Pilih Template Hijau [LAPORAN BERSIH];
+  :Lampirkan Ringkasan Status Aman;
+endif
+:Kirim Email via SMTP Gmail (Port 587);
+:Simpan Status dan Message ID ke Database;
+stop
+@enduml

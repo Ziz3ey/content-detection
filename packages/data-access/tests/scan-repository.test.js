@@ -101,6 +101,19 @@ test("creates a scan with a unique ID, timestamp, and independent detector resul
   assert.notEqual(another.id, created.id);
 });
 
+test("deletes only the requested scan record", () => {
+  const first = dataAccess.scans.create(sampleScan());
+  const second = dataAccess.scans.create(
+    sampleScan({ url: "https://example.test/other" }),
+  );
+
+  assert.equal(dataAccess.scans.deleteById(first.id), true);
+  assert.equal(dataAccess.scans.findById(first.id), null);
+  assert.equal(dataAccess.scans.findById(second.id).id, second.id);
+  assert.equal(dataAccess.scans.deleteById(first.id), false);
+  assert.throws(() => dataAccess.scans.deleteById(""), DataValidationError);
+});
+
 test("finds a scan by ID and returns null when it does not exist", () => {
   const created = dataAccess.scans.create(sampleScan());
 

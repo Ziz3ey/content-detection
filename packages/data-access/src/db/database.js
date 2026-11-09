@@ -16,6 +16,14 @@ function initializeDatabase(databasePath = resolveDatabasePath()) {
   if (!columns.some((column) => column.name === "crawl_metadata")) {
     database.exec("ALTER TABLE scans ADD COLUMN crawl_metadata TEXT");
   }
+  if (!columns.some((column) => column.name === "scan_source")) {
+    database.exec("ALTER TABLE scans ADD COLUMN scan_source TEXT NOT NULL DEFAULT 'MANUAL'");
+  }
+  if (!columns.some((column) => column.name === "officer_email")) {
+    database.exec("ALTER TABLE scans ADD COLUMN officer_email TEXT");
+  }
+  database.exec("CREATE INDEX IF NOT EXISTS scans_scan_source_idx ON scans(scan_source)");
+  database.exec("CREATE INDEX IF NOT EXISTS scans_officer_email_idx ON scans(officer_email)");
   database.pragma("user_version = 2");
   return database;
 }

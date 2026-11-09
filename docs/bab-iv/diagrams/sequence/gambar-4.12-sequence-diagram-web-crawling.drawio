@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<mxfile host="app.diagrams.net" agent="Antigravity" version="24.0.0" type="device">
+  <diagram id="DSRM_Diag" name="Sequence Diagram Web Crawling">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="hd_worker" value="Scan Worker" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="15" y="50" width="90" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_worker" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=none;dashed=1;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="59.5" y="95" width="1" height="550" as="geometry"/>
+        </mxCell>
+        <mxCell id="bar_worker" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="55" y="120" width="10" height="480" as="geometry"/>
+        </mxCell>
+        <mxCell id="hd_crawler" value="Crawler Service" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="248" y="50" width="90" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_crawler" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=none;dashed=1;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="292.5" y="95" width="1" height="550" as="geometry"/>
+        </mxCell>
+        <mxCell id="bar_crawler" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="288" y="120" width="10" height="480" as="geometry"/>
+        </mxCell>
+        <mxCell id="hd_robots" value="robots-parser" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="481" y="50" width="90" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_robots" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=none;dashed=1;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="525.5" y="95" width="1" height="550" as="geometry"/>
+        </mxCell>
+        <mxCell id="bar_robots" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="521" y="120" width="10" height="480" as="geometry"/>
+        </mxCell>
+        <mxCell id="hd_target" value="Target Server" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="714" y="50" width="90" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_target" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=none;dashed=1;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="758.5" y="95" width="1" height="550" as="geometry"/>
+        </mxCell>
+        <mxCell id="bar_target" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="754" y="120" width="10" height="480" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

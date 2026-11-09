@@ -1,0 +1,56 @@
+<?xml version="1.0" ?>
+<mxfile host="app.diagrams.net" agent="Antigravity" version="24.0.0" type="device">
+  <diagram id="DSRM_Diag" name="Activity Diagram Penyimpanan Hasil">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="lane_0" value="Aggregator Service" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#EEEEEE;fontColor=#000000;fontFamily=Arial;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="240" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_bg_0" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=none;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="70" width="240" height="650" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_1" value="Database SQLite" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#EEEEEE;fontColor=#000000;fontFamily=Arial;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="40" width="240" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_bg_1" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=none;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="70" width="240" height="650" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_2" value="Dashboard UI" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#EEEEEE;fontColor=#000000;fontFamily=Arial;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="40" width="240" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_bg_2" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=none;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="70" width="240" height="650" as="geometry"/>
+        </mxCell>
+        <mxCell id="start_node" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="145" y="90" width="30" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1" value="Kompilasi Hasil Analisis 3 Layanan Deteksi" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="140" width="180" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="s2" value="Buka Transaksi Atomik (better-sqlite3)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="310" y="140" width="180" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="s3" value="INSERT scans, scan_pages, scan_findings" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="310" y="210" width="180" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="s4" value="Commit Transaksi Database (ACID)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="310" y="280" width="180" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="s5" value="Perbarui Status Pekerjaan Menjadi COMPLETED" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="70" y="350" width="180" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="s6" value="Dashboard Polling Menerima Pembaruan Data" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="550" y="420" width="180" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="s7" value="Visualisasikan Ringkasan &amp; Detail Forensik" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="550" y="490" width="180" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="end1" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=#000000;strokeWidth=2;shape=doubleEllipse;" vertex="1" parent="1">
+          <mxGeometry x="625" y="560" width="30" height="30" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

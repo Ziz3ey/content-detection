@@ -5,7 +5,7 @@ const { AhoCorasick } = require("../detectors/aho-corasick");
 const matcher = new AhoCorasick(PATTERN_REGISTRY);
 
 function detectText(text) {
-  const matchedPatterns = matcher.search(text);
+  const matchedPatterns = matcher.search(text, { wordBoundary: true });
   const matchesByCategory = new Map();
 
   for (const match of matchedPatterns) {

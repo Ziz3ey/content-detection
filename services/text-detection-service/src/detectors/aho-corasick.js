@@ -10,6 +10,13 @@ function createNode() {
   };
 }
 
+function isWordBoundary(text, start, end) {
+  const hasStartBoundary = start === 0 || !/[a-z0-9]/i.test(text[start - 1]);
+  const hasEndBoundary =
+    end === text.length - 1 || !/[a-z0-9]/i.test(text[end + 1]);
+  return hasStartBoundary && hasEndBoundary;
+}
+
 class AhoCorasick {
   constructor(patterns) {
     if (!Array.isArray(patterns)) {
@@ -88,7 +95,7 @@ class AhoCorasick {
     return this;
   }
 
-  search(text) {
+  search(text, options = {}) {
     const normalizedText = normalizeText(text);
     if (!this.built) {
       this.build();
@@ -110,10 +117,19 @@ class AhoCorasick {
 
       for (const output of node.outputs) {
         const end = index;
+        const start = end - output.pattern.length + 1;
+
+        if (
+          options.wordBoundary &&
+          !isWordBoundary(normalizedText, start, end)
+        ) {
+          continue;
+        }
+
         matches.push({
           pattern: output.pattern,
           category: output.category,
-          start: end - output.pattern.length + 1,
+          start,
           end,
         });
       }
@@ -129,4 +145,5 @@ class AhoCorasick {
   }
 }
 
-module.exports = { AhoCorasick };
+module.exports = { AhoCorasick, isWordBoundary };
+

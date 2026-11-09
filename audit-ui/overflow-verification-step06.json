@@ -1,0 +1,122 @@
+[
+  {
+    "label": "01. Ringkasan — 1440px Skenario Normal (Sidebar Penuh)",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 1309,
+    "hasOverflow": false
+  },
+  {
+    "label": "02. Ringkasan — 1440px Sidebar Ciut (Collapsed) (Sidebar Ciut)",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 1326,
+    "hasOverflow": false
+  },
+  {
+    "label": "03. Shell — 1440px Menu Notifikasi Terbuka (Sidebar Ciut)",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 1326,
+    "hasOverflow": false
+  },
+  {
+    "label": "04. Ringkasan — 1440px Skenario Terindikasi (Indicated) (Sidebar Penuh)",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 1309,
+    "hasOverflow": false
+  },
+  {
+    "label": "05. Ringkasan — 1440px Skenario Kosong (Empty State) (Sidebar Penuh)",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 1103,
+    "hasOverflow": false
+  },
+  {
+    "label": "06. Ringkasan — 1440px Skenario Galat Backend (Error State) (Sidebar Penuh)",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 931,
+    "hasOverflow": false
+  },
+  {
+    "label": "07. Ringkasan — 1024px Tablet Skenario Normal (Sidebar Penuh)",
+    "width": 1024,
+    "scrollWidth": 1024,
+    "innerWidth": 1024,
+    "scrollHeight": 1416,
+    "hasOverflow": false
+  },
+  {
+    "label": "08. Ringkasan — 1024px Tablet Skenario Terindikasi (Sidebar Penuh)",
+    "width": 1024,
+    "scrollWidth": 1024,
+    "innerWidth": 1024,
+    "scrollHeight": 1601,
+    "hasOverflow": false
+  },
+  {
+    "label": "09. Ringkasan — 768px Tablet Skenario Normal (Sidebar Penuh)",
+    "width": 768,
+    "scrollWidth": 768,
+    "innerWidth": 768,
+    "scrollHeight": 2207,
+    "hasOverflow": false
+  },
+  {
+    "label": "10. Ringkasan — 768px Tablet Skenario Terindikasi (Sidebar Penuh)",
+    "width": 768,
+    "scrollWidth": 768,
+    "innerWidth": 768,
+    "scrollHeight": 2265,
+    "hasOverflow": false
+  },
+  {
+    "label": "11. Ringkasan — 390px Ponsel Skenario Normal (Sidebar Penuh)",
+    "width": 390,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 2790,
+    "hasOverflow": false
+  },
+  {
+    "label": "12. Shell — 390px Ponsel Laci Navigasi Terbuka (Laci Mobile Terbuka)",
+    "width": 390,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 2790,
+    "hasOverflow": false
+  },
+  {
+    "label": "13. Shell — 390px Ponsel Menu Notifikasi Responsif (Sidebar Penuh)",
+    "width": 390,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 2790,
+    "hasOverflow": false
+  },
+  {
+    "label": "14. Ringkasan — 390px Ponsel Skenario Terindikasi (Sidebar Penuh)",
+    "width": 390,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 3051,
+    "hasOverflow": false
+  },
+  {
+    "label": "15. Landing Page — 1024px Verifikasi Tidak Blank (Cacat 0.8) (Sidebar Penuh)",
+    "width": 1024,
+    "scrollWidth": 1024,
+    "innerWidth": 1024,
+    "scrollHeight": 2631,
+    "hasOverflow": false
+  }
+]

@@ -1,0 +1,17 @@
+@startuml
+!theme plain
+start
+:Terima Daftar URL Halaman;
+:Parse Struktur URL;
+:Periksa Format Host (IP Mentah vs Domain);
+:Hitung Jumlah Label Subdomain;
+:Pindai Sensitive Path (/wp-admin/, .env);
+if (Terindikasi Anomali?) then (Ya)
+  :Tandai SUSPICIOUS_LINK;
+  :Catat Kode Alasan Heuristik;
+else (Tidak)
+  :Tandai Tautan Normal;
+endif
+:Kembalikan Hasil ke Aggregator;
+stop
+@enduml

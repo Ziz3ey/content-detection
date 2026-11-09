@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" agent="Antigravity-Academic" version="24.0.0" type="device">
+  <diagram id="diag_diagram_metode_dsrm" name="diagram-metode-dsrm">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1080" pageHeight="760" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="ALUR PENELITIAN DESIGN SCIENCE RESEARCH METHODOLOGY (DSRM)
+SISTEM PEMANTAUAN DAN DETEKSI KONTEN NEGATIF PEMKAB SUMBAWA" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="100" y="15" width="900" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="dsrm_1" value="Tahap 1: Identifikasi Masalah &amp; Motivasi (Problem Identification &amp; Motivation)
+• Maraknya sisipan judi online, konten pornografi, dan defacement pada situs resmi Pemkab Sumbawa.
+• Kebutuhan mekanisme inspeksi otomatis berbasis microservices dan pencocokan pola kata kunci Aho-Corasick." style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="150" y="80" width="780" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="dsrm_2" value="Tahap 2: Penentuan Tujuan Solusi (Define Objectives of a Solution)
+• Merancang arsitektur sistem mandiri berbasis decoupled microservices (REST API Node.js).
+• Menyediakan fitur deteksi teks multi-pola, deteksi tautan tersembunyi, verifikasi hash baseline defacement,
+  serta pengiriman notifikasi surel terotomasi kepada petugas CSIRT pengelola." style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="150" y="185" width="780" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="dsrm_3" value="Tahap 3: Perancangan dan Pengembangan (Design and Development)
+• Perancangan diagram Unified Modeling Language (UML): Use Case, Activity, Sequence, Component.
+• Pengembangan 5 microservices: Aggregator, Crawler (BFS), Text Detection (Aho-Corasick Trie),
+  Link Detection (Heuristik), Defacement Detection, SQLite Persistence, dan Dashboard React UI." style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="150" y="295" width="780" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="dsrm_4" value="Tahap 4: Demonstrasi (Demonstration)
+• Pengujian pemindaian mandiri terhadap situs aktif instansi Kabupaten Sumbawa (sumbawakab.go.id, uts.ac.id).
+• Verifikasi operasional background scanning worker dan validasi pengiriman notifikasi email via SMTP Gmail." style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="150" y="410" width="780" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="dsrm_5" value="Tahap 5: Evaluasi (Evaluation)
+• Pengujian empiris 50 sampel dataset (25 situs normal Pemkab Sumbawa + 25 sampel indikasi negatif).
+• Evaluasi metrik performa Confusion Matrix: True Positive (25), True Negative (25), False Positive (0),
+  False Negative (0), Akurasi 100%, Presisi 100%, Recall 100%, dan F1-Score 100%.
+• Pengujian otomatis unit &amp; integrasi (214 test case)." style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="150" y="515" width="780" height="95" as="geometry"/>
+        </mxCell>
+        <mxCell id="dsrm_6" value="Tahap 6: Komunikasi (Communication)
+• Penyusunan naskah skripsi lengkap (BAB I s/d BAB V) sesuai format akademik Universitas Teknologi Sumbawa.
+• Dokumentasi laporan audit teknis, penyusunan artikel publikasi ilmiah, dan presentasi hasil penelitian." style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="150" y="640" width="780" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_dsrm_0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=10;endArrow=classic;endFill=1;" edge="1" parent="1" source="dsrm_1" target="dsrm_2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_dsrm_1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=10;endArrow=classic;endFill=1;" edge="1" parent="1" source="dsrm_2" target="dsrm_3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_dsrm_2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=10;endArrow=classic;endFill=1;" edge="1" parent="1" source="dsrm_3" target="dsrm_4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_dsrm_3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=10;endArrow=classic;endFill=1;" edge="1" parent="1" source="dsrm_4" target="dsrm_5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_dsrm_4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=10;endArrow=classic;endFill=1;" edge="1" parent="1" source="dsrm_5" target="dsrm_6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_dsrm_feedback" value="Iterasi Perbaikan &amp; Optimasi Pola (Feedback Loop)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=2;dashed=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="dsrm_5" target="dsrm_3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="150" y="560"/>
+              <mxPoint x="70" y="560"/>
+              <mxPoint x="70" y="335"/>
+              <mxPoint x="150" y="335"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

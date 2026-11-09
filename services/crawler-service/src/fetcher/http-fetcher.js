@@ -1,3 +1,5 @@
+const dns = require("node:dns/promises");
+const net = require("node:net");
 const {
   CRAWLER_USER_AGENT,
   MAX_RESPONSE_BYTES,
@@ -7,6 +9,45 @@ const { isAllowedUrl, normalizeUrl } = require("../utils/url");
 
 const REDIRECT_STATUSES = new Set([301, 302, 303, 307, 308]);
 const MAX_REDIRECTS = 5;
+
+function isPrivateIp(ip) {
+  if (net.isIPv4(ip)) {
+    const parts = ip.split(".").map(Number);
+    if (parts[0] === 10) return true; // 10.0.0.0/8
+    if (parts[0] === 172 && parts[1] >= 16 && parts[1] <= 31) return true; // 172.16.0.0/12
+    if (parts[0] === 192 && parts[1] === 168) return true; // 192.168.0.0/16
+    if (parts[0] === 127) return true; // 127.0.0.0/8 loopback
+    if (parts[0] === 169 && parts[1] === 254) return true; // 169.254.0.0/16 link-local
+    if (parts[0] === 0) return true;
+    return false;
+  }
+  if (net.isIPv6(ip)) {
+    const lower = ip.toLowerCase();
+    if (lower === "::1" || lower === "0:0:0:0:0:0:0:1") return true;
+    if (lower.startsWith("fe80:")) return true;
+    if (lower.startsWith("fc") || lower.startsWith("fd")) return true;
+    return false;
+  }
+  return false;
+}
+
+async function validateDnsResolution(hostname, blockPrivateIps = false) {
+  if (!blockPrivateIps) return;
+  try {
+    const lookup = await dns.lookup(hostname, { all: true });
+    for (const record of lookup) {
+      if (isPrivateIp(record.address)) {
+        throw new CrawlerError(
+          "SSRF_BLOCKED",
+          `Resolving host ${hostname} points to private/restricted IP ${record.address}.`,
+        );
+      }
+    }
+  } catch (err) {
+    if (err instanceof CrawlerError) throw err;
+    // Let network errors be handled naturally by fetchImpl
+  }
+}
 
 async function discardBody(response) {
   try {
@@ -60,6 +101,7 @@ async function fetchResource(url, options) {
     timeoutMs,
     fetchImpl = globalThis.fetch,
     expectedContentType,
+    blockPrivateIps = process.env.BLOCK_PRIVATE_IPS === "true",
   } = options;
   let currentUrl = normalizeUrl(url);
   const redirectChain = new Set([currentUrl]);
@@ -70,6 +112,11 @@ async function fetchResource(url, options) {
         "HOST_NOT_ALLOWED",
         "Request host is not in allowedHosts.",
       );
+    }
+
+    if (blockPrivateIps) {
+      const parsed = new URL(currentUrl);
+      await validateDnsResolution(parsed.hostname, true);
     }
 
     const response = await fetchImpl(currentUrl, {
@@ -103,7 +150,14 @@ async function fetchResource(url, options) {
         };
       }
 
-      const nextUrl = normalizeUrl(location, currentUrl);
+      let nextUrl;
+      try {
+        const parsedRedirect = new URL(location, currentUrl);
+        parsedRedirect.hash = "";
+        nextUrl = parsedRedirect.href;
+      } catch {
+        nextUrl = normalizeUrl(location, currentUrl);
+      }
       if (!isAllowedUrl(nextUrl, allowedHosts)) {
         return {
           ok: false,
@@ -137,12 +191,18 @@ async function fetchResource(url, options) {
 
     if (!response.ok) {
       await discardBody(response);
+      const isAccessDenied = status === 403 || status === 401;
       return {
         ok: false,
         status,
         contentType,
         finalUrl: currentUrl,
-        error: { code: "HTTP_STATUS", message: `HTTP status ${status}.` },
+        error: {
+          code: isAccessDenied ? "ACCESS_DENIED" : "HTTP_STATUS",
+          message: isAccessDenied
+            ? `Akses ditolak oleh server target (HTTP ${status}).`
+            : `Gagal mengambil halaman (HTTP status ${status}).`,
+        },
       };
     }
 
@@ -155,7 +215,7 @@ async function fetchResource(url, options) {
         finalUrl: currentUrl,
         error: {
           code: "UNSUPPORTED_CONTENT_TYPE",
-          message: `Expected ${expectedContentType}.`,
+          message: `Tipe konten '${contentType || "tidak dikenal"}' tidak didukung (diharapkan ${expectedContentType}).`,
         },
       };
     }
@@ -165,4 +225,8 @@ async function fetchResource(url, options) {
   }
 }
 
-module.exports = { fetchResource };
+module.exports = {
+  fetchResource,
+  isPrivateIp,
+  validateDnsResolution,
+};

@@ -1,0 +1,20 @@
+@startuml
+!theme plain
+start
+:Terima Teks Halaman;
+:Normalisasi Teks (Lowercase, Trim);
+:Bangun Trie & Failure Links;
+:Iterasi Karakter Teks;
+if (Karakter Cocok?) then (Ya)
+  :Pindah ke Node Anak;
+else (Tidak)
+  :Lompat ke Failure Link;
+endif
+:Cek Output Dictionary;
+if (Cocok & Word Boundary Valid?) then (Ya)
+  :Catat Temuan Pola;
+  :Kelompokkan Kategori (Judi, Penipuan, Pornografi);
+endif
+:Kirim Hasil Deteksi ke Aggregator;
+stop
+@enduml

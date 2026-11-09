@@ -15,6 +15,7 @@ function createScanService({
   crawlerClient,
   analyze,
   scans,
+  notificationService,
   logger = console,
 }) {
   return async function scan(input) {
@@ -25,6 +26,7 @@ function createScanService({
 
     const responsePages = [];
     const records = [];
+    const scanSource = input.scanSource === "SCHEDULED" ? "SCHEDULED" : "MANUAL";
 
     for (const page of pages) {
       let detections;
@@ -94,6 +96,8 @@ function createScanService({
           links: page.links || [],
           error: page.error || null,
         },
+        scanSource,
+        officerEmail: input.officerEmail || null,
         textDetection: textResult,
         defacementDetection: defacementResult,
         defacementDetectionStatus:
@@ -119,16 +123,39 @@ function createScanService({
       });
     }
 
-    logger.info?.(`Persisting ${records.length} scan record(s).`);
+    logger.info?.(`Persisting ${records.length} scan record(s) [Source: ${scanSource}].`);
     const savedRecords = scans.createMany(records);
     logger.info?.(`Scan completed: ${savedRecords.length} record(s) saved.`);
 
+    // Integrasi Notifikasi Email:
+    // Dikirim setelah pemindaian selesai dan tersimpan ke database (non-blocking terhadap kegagalan)
+    let emailNotification = null;
+    if (notificationService && typeof notificationService.notifyScanResults === "function") {
+      try {
+        emailNotification = await notificationService.notifyScanResults({
+          startUrl: input.crawler.startUrl,
+          records: savedRecords,
+          officerEmail: input.officerEmail || null,
+          notifyOnClean: Boolean(input.officerEmail),
+          startedAt: input.startedAt || savedRecords[0]?.scannedAt,
+          completedAt: new Date().toISOString(),
+        });
+      } catch (error) {
+        logger.error?.("[Notification] Gagal mengirim notifikasi hasil pemindaian:", error?.message || error);
+        emailNotification = { notified: false, error: error?.message || String(error) };
+      }
+    }
+
     return {
       startUrl: input.crawler.startUrl,
+      emailNotification,
       pages: responsePages.map((page, index) => ({
         ...page,
         id: savedRecords[index].id,
         scannedAt: savedRecords[index].scannedAt,
+        scanSource,
+        officerEmail: input.officerEmail || null,
+        emailNotification,
       })),
     };
   };

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" agent="Antigravity-Academic" version="24.0.0" type="device">
+  <diagram id="diag_sequence_diagram" name="sequence-diagram">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="880" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="SEQUENCE DIAGRAM INTERAKSI KOMPREHENSIF PEMINDAIAN SITUS WEB
+PEMERINTAH KABUPATEN SUMBAWA" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="150" y="15" width="850" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="p_admin" value="Petugas CSIRT
+(Admin)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="85" y="70" width="35" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_p_admin" value="" style="edgeStyle=none;html=1;dashed=1;strokeColor=#000000;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="102" y="125" width="2" height="680" as="geometry"/>
+        </mxCell>
+        <mxCell id="p_dash" value="Dashboard UI
+(React :5173)" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="180" y="70" width="100" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_p_dash" value="" style="edgeStyle=none;html=1;dashed=1;strokeColor=#000000;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="230" y="125" width="2" height="680" as="geometry"/>
+        </mxCell>
+        <mxCell id="p_agg" value="Aggregator Svc
+(Orchestrator :3000)" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="310" y="70" width="110" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_p_agg" value="" style="edgeStyle=none;html=1;dashed=1;strokeColor=#000000;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="365" y="125" width="2" height="680" as="geometry"/>
+        </mxCell>
+        <mxCell id="p_crawl" value="Crawler Svc
+(Port :3001)" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="450" y="70" width="95" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_p_crawl" value="" style="edgeStyle=none;html=1;dashed=1;strokeColor=#000000;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="497" y="125" width="2" height="680" as="geometry"/>
+        </mxCell>
+        <mxCell id="p_text" value="Text Det Svc
+(Aho-Corasick :3002)" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="570" y="70" width="110" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_p_text" value="" style="edgeStyle=none;html=1;dashed=1;strokeColor=#000000;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="625" y="125" width="2" height="680" as="geometry"/>
+        </mxCell>
+        <mxCell id="p_link" value="Link Det Svc
+(Port :3003)" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="705" y="70" width="95" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_p_link" value="" style="edgeStyle=none;html=1;dashed=1;strokeColor=#000000;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="752" y="125" width="2" height="680" as="geometry"/>
+        </mxCell>
+        <mxCell id="p_def" value="Defacement Svc
+(Port :3004)" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="825" y="70" width="105" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_p_def" value="" style="edgeStyle=none;html=1;dashed=1;strokeColor=#000000;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="877" y="125" width="2" height="680" as="geometry"/>
+        </mxCell>
+        <mxCell id="p_db" value="SQLite DB
+(scans.db)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="955" y="70" width="85" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_p_db" value="" style="edgeStyle=none;html=1;dashed=1;strokeColor=#000000;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="997" y="125" width="2" height="680" as="geometry"/>
+        </mxCell>
+        <mxCell id="p_smtp" value="SMTP Server
+(Gmail :587)" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1065" y="70" width="95" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="ll_p_smtp" value="" style="edgeStyle=none;html=1;dashed=1;strokeColor=#000000;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1112" y="125" width="2" height="680" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_seq_0" value="1: Input URL Target &amp; Email Petugas" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;dashed=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="p_admin" target="p_dash">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="150"/>
+              <mxPoint x="1100" y="150"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_seq_1" value="2: POST /api/v1/scan (maxPages, depth)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;dashed=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="p_dash" target="p_agg">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="185"/>
+              <mxPoint x="1100" y="185"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_seq_2" value="3: createScanJob(status='running')" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;dashed=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="p_agg" target="p_db">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="220"/>
+              <mxPoint x="1100" y="220"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_seq_3" value="4: 201 Created (jobId: 'job-xxxx')" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;dashed=1;endArrow=open;endFill=1;" edge="1" parent="1" source="p_db" target="p_agg">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="250"/>
+              <mxPoint x="1100" y="250"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_seq_4" value="5: 202 Accepted (Background Worker Dispatched)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;dashed=1;endArrow=open;endFill=1;" edge="1" parent="1" source="p_agg" target="p_dash">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="280"/>
+              <mxPoint x="1100" y="280"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_seq_5" value="6: POST /api/v1/crawl (startUrl, robots.txt)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;dashed=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="p_agg" target="p_crawl">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="320"/>
+              <mxPoint x="1100" y="320"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_seq_6" value="7: 200 OK (pages: [{url, html, text, links}])" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;dashed=1;endArrow=open;endFill=1;" edge="1" parent="1" source="p_crawl" target="p_agg">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="360"/>
+              <mxPoint x="1100" y="360"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_seq_7" value="8: POST /api/v1/detect (text, leet-speak)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;dashed=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="p_agg" target="p_text">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="410"/>
+              <mxPoint x="1100" y="410"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_seq_8" value="9: 200 OK (matches, confidence, categories)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;dashed=1;endArrow=open;endFill=1;" edge="1" parent="1" source="p_text" target="p_agg">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="445"/>
+              <mxPoint x="1100" y="445"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_seq_9" value="10: POST /api/v1/detect (extracted links)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;dashed=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="p_agg" target="p_link">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="480"/>
+              <mxPoint x="1100" y="480"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_seq_10" value="11: 200 OK (suspiciousDomain, indicators)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;dashed=1;endArrow=open;endFill=1;" edge="1" parent="1" source="p_link" target="p_agg">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="515"/>
+              <mxPoint x="1100" y="515"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_seq_11" value="12: POST /api/v1/detect (DOM structure, hash)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;dashed=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="p_agg" target="p_def">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="550"/>
+              <mxPoint x="1100" y="550"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_seq_12" value="13: 200 OK (defaced: bool, visualRatio)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;dashed=1;endArrow=open;endFill=1;" edge="1" parent="1" source="p_def" target="p_agg">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="585"/>
+              <mxPoint x="1100" y="585"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_seq_13" value="14: createMany(scanRecords) &amp; updateJob(completed)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;dashed=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="p_agg" target="p_db">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="630"/>
+              <mxPoint x="1100" y="630"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_seq_14" value="15: Success (Persisted in scans.db)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;dashed=1;endArrow=open;endFill=1;" edge="1" parent="1" source="p_db" target="p_agg">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="660"/>
+              <mxPoint x="1100" y="660"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_seq_15" value="16: sendMail(Notifikasi Hasil Pemindaian)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;dashed=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="p_agg" target="p_smtp">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="700"/>
+              <mxPoint x="1100" y="700"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_seq_16" value="17: 250 OK (RFC 2822 Message-ID)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;dashed=1;endArrow=open;endFill=1;" edge="1" parent="1" source="p_smtp" target="p_agg">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="730"/>
+              <mxPoint x="1100" y="730"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_seq_17" value="18: GET /api/v1/scans/recent" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;dashed=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="p_dash" target="p_agg">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="760"/>
+              <mxPoint x="1100" y="760"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_seq_18" value="19: 200 OK (scanSummary &amp; emailStatus)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;dashed=1;endArrow=open;endFill=1;" edge="1" parent="1" source="p_agg" target="p_dash">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="785"/>
+              <mxPoint x="1100" y="785"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_seq_19" value="20: Tampilkan Ringkasan Hasil &amp; Notifikasi Email" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=1;dashed=0;endArrow=classic;endFill=1;" edge="1" parent="1" source="p_dash" target="p_admin">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="100" y="810"/>
+              <mxPoint x="1100" y="810"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

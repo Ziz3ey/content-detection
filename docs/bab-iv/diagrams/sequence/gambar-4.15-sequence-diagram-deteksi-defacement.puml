@@ -1,0 +1,23 @@
+@startuml
+!theme plain
+autonumber
+participant "Aggregator Worker" as Worker
+participant "Defacement Service (:3002)" as DefSvc
+database "Baseline Repository" as DB
+participant "Structural Hash Engine" as Hasher
+
+Worker -> DefSvc: POST /detect/defacement { siteId, url, html, title }
+DefSvc -> DB: Cari Snapshot Baseline Tersimpan (siteId, url)
+DB --> DefSvc: Return Baseline Data / Null
+
+alt Baseline Belum Ada
+  DefSvc -> Hasher: Hitung SHA-256 DOM & Struktur SimHash
+  Hasher --> DefSvc: Initial Signature
+  DefSvc -> DB: INSERT INTO baselines (site_id, url, dom_hash, title)
+  DefSvc --> Worker: HTTP 200 OK { status: 'BASELINE_CREATED', hasIndication: false }
+else Baseline Sudah Tersedia
+  DefSvc -> Hasher: Bandingkan DOM, Struktur Tag, & Judul Halaman
+  Hasher --> DefSvc: Similarity Ratio & Indikasi Perubahan Signifikan
+  DefSvc --> Worker: HTTP 200 OK { hasIndication, diffScore, changeType }
+end
+@enduml

@@ -1,0 +1,399 @@
+{
+  "total": 107,
+  "colors": {
+    "#081225": [
+      "src\\styles.css"
+    ],
+    "#38bdf8": [
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "#6366f1": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "#ffffff": [
+      "src\\styles.css"
+    ],
+    "#fffdf8": [
+      "src\\styles.css"
+    ],
+    "#bbf7d0": [
+      "src\\styles.css"
+    ],
+    "#166534": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "#1e293b": [
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "#fecaca": [
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "#ecfdf5": [
+      "src\\styles.css"
+    ],
+    "#fca5a5": [
+      "src\\styles.css"
+    ],
+    "#4ade80": [
+      "src\\styles.css"
+    ],
+    "#991b1b": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "#7f1d1d": [
+      "src\\styles.css"
+    ],
+    "#fff1f2": [
+      "src\\styles.css"
+    ],
+    "#ffe4e6": [
+      "src\\styles.css"
+    ],
+    "#9f1239": [
+      "src\\styles.css"
+    ],
+    "#be123c": [
+      "src\\styles.css"
+    ],
+    "#0b1329": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "#93c5fd": [
+      "src\\styles.css"
+    ],
+    "#090d16": [
+      "src\\styles.css"
+    ],
+    "#090e1a": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "#34d399": [
+      "src\\styles.css"
+    ],
+    "#c084fc": [
+      "src\\styles.css"
+    ],
+    "rgba(255, 255, 255, 0.07)": [
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(5, 12, 24, 0.25)": [
+      "src\\styles.css"
+    ],
+    "rgba(37, 99, 235, 0.35)": [
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(255, 255, 255, 0.15)": [
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(34, 197, 94, 0.8)": [
+      "src\\styles.css"
+    ],
+    "rgba(255, 255, 255, 0.65)": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(255, 255, 255, 0.06)": [
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(255, 255, 255, 0.1)": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(255, 255, 255, 0.08)": [
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(255, 255, 255, 0.35)": [
+      "src\\styles.css"
+    ],
+    "rgba(37, 99, 235, 0.24)": [
+      "src\\styles.css"
+    ],
+    "rgba(37, 99, 235, 0.06)": [
+      "src\\styles.css"
+    ],
+    "rgba(59, 130, 246, 0.8)": [
+      "src\\styles.css"
+    ],
+    "rgba(255, 255, 255, 0.6)": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(255, 255, 255, 0.12)": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(255, 255, 255, 0.75)": [
+      "src\\styles.css"
+    ],
+    "rgba(239, 68, 68, 0.15)": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(37, 99, 235, 0.12)": [
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(34, 197, 94, 0.08)": [
+      "src\\styles.css"
+    ],
+    "rgba(34, 197, 94, 0.25)": [
+      "src\\styles.css"
+    ],
+    "rgba(34, 197, 94, 0.6)": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(34, 197, 94, 0)": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(59, 130, 246, 0.15)": [
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(15, 23, 42, 0.08)": [
+      "src\\styles.css"
+    ],
+    "rgba(37, 99, 235, 0.1)": [
+      "src\\styles.css"
+    ],
+    "rgba(37, 99, 235, 0.2)": [
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(99, 102, 241, 0.1)": [
+      "src\\styles.css"
+    ],
+    "rgba(99, 102, 241, 0.2)": [
+      "src\\styles.css"
+    ],
+    "rgba(245, 158, 11, 0.1)": [
+      "src\\styles.css"
+    ],
+    "rgba(245, 158, 11, 0.2)": [
+      "src\\styles.css"
+    ],
+    "rgba(16, 185, 129, 0.1)": [
+      "src\\styles.css"
+    ],
+    "rgba(16, 185, 129, 0.2)": [
+      "src\\styles.css"
+    ],
+    "rgba(37, 99, 235, 0.08)": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(59, 130, 246, 0.12)": [
+      "src\\styles.css"
+    ],
+    "rgba(59, 130, 246, 0.06)": [
+      "src\\styles.css"
+    ],
+    "rgba(22, 163, 74, 0.04)": [
+      "src\\styles.css"
+    ],
+    "rgba(15, 23, 42, 0.55)": [
+      "src\\styles.css"
+    ],
+    "rgba(15, 23, 42, 0.72)": [
+      "src\\styles.css"
+    ],
+    "rgba(226, 232, 240, 0.95)": [
+      "src\\styles.css"
+    ],
+    "rgba(37, 99, 235, 0.15)": [
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(37, 99, 235, 0.25)": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(37, 99, 235, 0.18)": [
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(37, 99, 235, 0.28)": [
+      "src\\styles.css"
+    ],
+    "rgba(0, 0, 0, 0.05)": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(37, 99, 235, 0.38)": [
+      "src\\styles.css"
+    ],
+    "rgba(37, 99, 235, 0.14)": [
+      "src\\styles.css"
+    ],
+    "rgba(255, 255, 255, 0.8)": [
+      "src\\styles.css"
+    ],
+    "rgba(22, 163, 74, 0.2)": [
+      "src\\styles.css"
+    ],
+    "rgba(239, 68, 68, 0.25)": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(245, 158, 11, 0.25)": [
+      "src\\styles.css"
+    ],
+    "rgba(0, 0, 0, 0.08)": [
+      "src\\styles.css"
+    ],
+    "rgba(11, 19, 41, 0.9)": [
+      "src\\styles.css"
+    ],
+    "rgba(37, 99, 235, 0.3)": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(37, 99, 235, 0.45)": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(11, 19, 41, 1)": [
+      "src\\styles.css"
+    ],
+    "rgba(30, 41, 59, 0.8)": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(59, 130, 246, 0.3)": [
+      "src\\styles.css"
+    ],
+    "rgba(0, 0, 0, 0.2)": [
+      "src\\styles.css"
+    ],
+    "rgba(56, 189, 248, 0.12)": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(37, 99, 235, 0.4)": [
+      "src\\styles.css"
+    ],
+    "rgba(37, 99, 235, 0.55)": [
+      "src\\styles.css"
+    ],
+    "rgba(30, 41, 59, 0.6)": [
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(30, 41, 59, 0.95)": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(255, 255, 255, 0.25)": [
+      "src\\styles.css"
+    ],
+    "rgba(59, 130, 246, 0.25)": [
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(0, 0, 0, 0.5)": [
+      "src\\styles.css"
+    ],
+    "rgba(255, 255, 255, 0.05)": [
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(16, 185, 129, 0.15)": [
+      "src\\styles.css"
+    ],
+    "rgba(168, 85, 247, 0.15)": [
+      "src\\styles.css"
+    ],
+    "rgba(0, 0, 0, 0.04)": [
+      "src\\styles.css"
+    ],
+    "rgba(11, 19, 41, 0.25)": [
+      "src\\styles.css"
+    ],
+    "rgba(37, 99, 235, 0.22)": [
+      "src\\styles.css"
+    ],
+    "rgba(7, 13, 30, 1)": [
+      "src\\styles.css"
+    ],
+    "rgba(6, 182, 212, 0.16)": [
+      "src\\styles.css"
+    ],
+    "rgba(59, 130, 246, 0.4)": [
+      "src\\styles.css"
+    ],
+    "rgba(30, 41, 59, 0.85)": [
+      "src\\styles.css"
+    ],
+    "rgba(59, 130, 246, 0.35)": [
+      "src\\styles.css",
+      "src\\styles.css"
+    ],
+    "rgba(0, 0, 0, 0.25)": [
+      "src\\styles.css"
+    ],
+    "rgba(15, 23, 42, 0.65)": [
+      "src\\styles.css"
+    ],
+    "rgba(0, 0, 0, 0.4)": [
+      "src\\styles.css"
+    ],
+    "rgba(30, 41, 59, 0.5)": [
+      "src\\styles.css"
+    ],
+    "rgba(255, 255, 255, 0.04)": [
+      "src\\styles.css"
+    ],
+    "rgba(15, 23, 42, 0.07)": [
+      "src\\styles.css"
+    ]
+  }
+}

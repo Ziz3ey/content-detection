@@ -1,0 +1,23 @@
+@startuml
+!theme plain
+|Pengguna / Admin|
+start
+:Buka Halaman Login;
+|Sistem|
+:Tampilkan Form Login;
+|Pengguna / Admin|
+:Input Username & Password;
+:Klik 'Masuk ke Dashboard';
+|Sistem|
+:Validasi Scrypt Hash;
+if (Kredensial Valid?) then (Ya)
+  :Generate Session Token & Cookie;
+  |Pengguna / Admin|
+  :Akses Dashboard Utama;
+  stop
+else (Tidak)
+  |Sistem|
+  :Tampilkan Pesan Kesalahan;
+  detach
+endif
+@enduml

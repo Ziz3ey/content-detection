@@ -1,0 +1,329 @@
+/**
+ * CONTENT DETECTION — OVERVIEW PAGE (RINGKASAN) STYLES
+ * 100% token-based, zero hardcoded colors.
+ * All classes prefixed with 'ov-'.
+ */
+
+.ov-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  width: 100%;
+}
+
+/* ── 1. Page Header Actions ── */
+.ov-header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+/* ── 2. Condition Banner ── */
+.ov-condition-banner {
+  margin-bottom: var(--space-1);
+}
+
+/* ── 3. Metrics Grid (4 col >=1200px, 2 col tablet, 1 col mobile) ── */
+.ov-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.ov-stat-card {
+  height: 100%;
+}
+
+/* StatCard neutral default vs danger */
+.ov-stat-card.ui-stat-card--default {
+  border-left-color: var(--color-border);
+}
+
+.ov-stat-card.ui-stat-card--danger {
+  border-left-color: var(--color-danger);
+}
+
+.ov-stat-card .ui-stat-card__value {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── 4. Charts Row (2 col >=1024px, 1 col below) ── */
+.ov-charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.ov-chart-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 290px;
+}
+
+.ov-chart-card .ui-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-4);
+}
+
+.ov-visualizations {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.ov-visualizations-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.ov-chart-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.ov-bar-chart-svg {
+  overflow: visible;
+  max-width: 100%;
+  height: auto;
+}
+
+.ov-bar-group:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.ov-chart-footer-hint {
+  margin-top: var(--space-2);
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ov-hint-text {
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* Donut Chart */
+.ov-donut-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.ov-donut-svg-holder {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ov-donut-chart-svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.ov-donut-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 180px;
+  max-width: 100%;
+}
+
+.ov-donut-legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.15s ease;
+  user-select: none;
+}
+
+.ov-donut-legend-item:hover,
+.ov-donut-legend-item:focus-visible,
+.ov-donut-legend-item.is-hovered {
+  background-color: var(--color-surface-hover);
+}
+
+.ov-donut-legend-item:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+}
+
+.ov-donut-legend-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-xs, 2px);
+  flex-shrink: 0;
+}
+
+.ov-donut-legend-label {
+  flex: 1;
+  color: var(--color-text-secondary);
+  font-weight: var(--weight-medium);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ov-donut-legend-val {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+}
+
+.ov-donut-legend-pct {
+  color: var(--color-text-tertiary);
+  font-weight: var(--weight-regular);
+}
+
+/* Donut Zero findings state */
+.ov-donut-empty-container {
+  min-height: 190px;
+}
+
+.ov-donut-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  text-align: center;
+  padding: var(--space-4);
+  color: var(--color-text-secondary);
+}
+
+.ov-donut-empty-icon {
+  color: var(--color-success);
+}
+
+.ov-donut-empty-text {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ── 5. Recent Scans Table Card ── */
+.ov-scans-card {
+  width: 100%;
+}
+
+.ov-site-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ov-site-name {
+  font-weight: var(--weight-medium);
+  color: var(--color-text);
+  line-height: var(--leading-tight);
+}
+
+.ov-site-host {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+  word-break: break-all;
+}
+
+.ov-site-meta-mobile {
+  display: none;
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+  margin-top: 4px;
+}
+
+.ov-time-text {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.ov-btn-detail {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ── 6. Responsive Breakpoints ── */
+
+/* Tablet (768px - 1199px) */
+@media (max-width: 1199px) {
+  .ov-metrics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Sub-1024px: stack charts */
+@media (max-width: 1023px) {
+  .ov-charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile (<= 767px) */
+@media (max-width: 767px) {
+  .ov-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .ov-header-actions {
+    width: 100%;
+  }
+
+  .ov-header-actions > * {
+    flex: 1;
+  }
+}
+
+/* Small Mobile (<= 640px): hide time and source columns, inline into site cell */
+@media (max-width: 640px) {
+  .ov-col-time,
+  .ov-col-source {
+    display: none !important;
+  }
+
+  .ov-site-meta-mobile {
+    display: block;
+  }
+
+  .ov-donut-wrapper {
+    flex-direction: column;
+  }
+}
+
+/* ── 7. Reduced Motion Support ── */
+@media (prefers-reduced-motion: reduce) {
+  .ov-bar-rect,
+  .ov-donut-slice,
+  .ov-donut-legend-item {
+    transition: none !important;
+  }
+}

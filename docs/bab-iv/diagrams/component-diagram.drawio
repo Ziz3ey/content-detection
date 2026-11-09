@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" agent="Antigravity-Academic" version="24.0.0" type="device">
+  <diagram id="diag_component_diagram" name="component-diagram">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1150" pageHeight="520" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="COMPONENT DIAGRAM ARSITEKTUR PERANGKAT LUNAK SISTEM PEMANTAUAN
+DAN DETEKSI KONTEN NEGATIF BERBASIS MICROSERVICES" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="150" y="15" width="850" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="cmp_dash" value="«component»
+Dashboard UI
+(React 18 / Vite)" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="220" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="cmp_agg" value="«component»
+Aggregator Service
+(Express API Gateway)" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="80" width="260" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="cmp_crawl" value="«component»
+Crawler Service
+(Axios / Cheerio)" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="240" width="220" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="cmp_text" value="«component»
+Text Detection Service
+(Algoritma Aho-Corasick)" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="240" width="220" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="cmp_link" value="«component»
+Link Detection Service
+(Heuristic Parser)" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="240" width="220" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="cmp_def" value="«component»
+Defacement Service
+(DOM &amp; Visual Hash)" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="240" width="220" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="cmp_data" value="«component»
+Data Access Package
+(@content-detection/data-access)" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="390" width="260" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="cmp_db" value="«database»
+SQLite Database
+(scans.db)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="750" y="390" width="180" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="cmp_smtp" value="«external»
+SMTP Mail Server
+(smtp.gmail.com)" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="880" y="80" width="200" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="cmp_target" value="«external»
+Situs Web Pemerintah
+(*.sumbawakab.go.id)" style="shape=module;align=left;spacingLeft=20;align=center;verticalAlign=middle;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="390" width="220" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_cmp_0" value="«use» REST API :3000" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=2;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="cmp_dash" target="cmp_agg">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_cmp_1" value="«use» POST :3001" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=2;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="cmp_agg" target="cmp_crawl">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_cmp_2" value="«use» POST :3002" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=2;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="cmp_agg" target="cmp_text">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_cmp_3" value="«use» POST :3003" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=2;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="cmp_agg" target="cmp_link">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_cmp_4" value="«use» POST :3004" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=2;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="cmp_agg" target="cmp_def">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_cmp_5" value="«use» Repository Interface" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=2;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="cmp_agg" target="cmp_data">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_cmp_6" value="better-sqlite3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=2;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="cmp_data" target="cmp_db">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_cmp_7" value="«use» SMTP TLS :587" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=2;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="cmp_agg" target="cmp_smtp">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e_cmp_8" value="«use» HTTP GET" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=9;fontStyle=2;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="cmp_crawl" target="cmp_target">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

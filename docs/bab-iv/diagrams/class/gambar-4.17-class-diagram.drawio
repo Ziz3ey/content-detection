@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" agent="Antigravity" version="24.0.0" type="device">
+  <diagram id="diag_class_diagram" name="Class Diagram">
+    <mxGraphModel dx="1422" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#ffffff">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="CLASS DIAGRAM SISTEM PEMANTAUAN DAN DETEKSI KONTEN NEGATIF
+PEMERINTAH KABUPATEN SUMBAWA" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Arial;fontSize=14;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="800" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_user" value="User" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="90" width="230" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_user_attrs" value="- id: String
+- username: String
+- password_hash: String
+- role: String
+- created_at: DateTime
+- updated_at: DateTime" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontSize=9;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="60" y="116" width="230" height="94" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_user_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="60" y="210" width="230" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_user_methods" value="+ verifyPassword(pass: String): Boolean
++ createSession(): String
++ validateRole(role: String): Boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontSize=9;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="60" y="218" width="230" height="52" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_scanjob" value="ScanJob" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="360" y="90" width="250" height="210" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_scanjob_attrs" value="- id: String
+- type: String
+- target_url: String
+- officer_email: String
+- status: String
+- progress_scanned: Integer
+- progress_total: Integer
+- started_at: DateTime
+- completed_at: DateTime" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontSize=9;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="116" width="250" height="136" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_scanjob_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="252" width="250" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_scanjob_methods" value="+ create(job: Object): ScanJob
++ updateProgress(id: String, cur: Int): Boolean
++ findRunning(): ScanJob[]
++ markFailed(id: String, err: String): Boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontSize=9;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="260" width="250" height="66" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_notification" value="Notification" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="680" y="90" width="240" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_notification_attrs" value="- id: String
+- scan_id: String
+- channel: String
+- recipient: String
+- subject: String
+- status: String
+- error_message: String
+- sent_at: DateTime" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontSize=9;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="680" y="116" width="240" height="122" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_notification_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="680" y="238" width="240" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_notification_methods" value="+ create(notif: Object): Notification
++ updateStatus(id: String, st: String): Boolean
++ findByScanId(scanId: String): Notification
++ listRecent(): Notification[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontSize=9;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="680" y="246" width="240" height="66" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_site" value="Site" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="390" width="240" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_site_attrs" value="- id: String
+- name: String
+- url: String
+- allowed_host: String
+- status: String
+- max_depth: Integer
+- max_pages: Integer
+- baseline_html: Text
+- created_at: DateTime
+- updated_at: DateTime" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontSize=9;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="60" y="416" width="240" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_site_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="60" y="566" width="240" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_site_methods" value="+ create(data: Object): Site
++ update(id: String, data: Object): Boolean
++ delete(id: String): Boolean
++ findByUrl(url: String): Site
++ listActive(): Site[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontSize=9;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="60" y="574" width="240" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_scan" value="Scan" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="360" y="380" width="260" height="310" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_scan_attrs" value="- id: String
+- url: String
+- scanned_at: DateTime
+- crawl_status: String
+- http_status: Integer
+- title: String
+- scan_source: String
+- officer_email: String
+- text_detection_status: String
+- text_detection_result: JSON
+- defacement_detection_status: String
+- defacement_detection_result: JSON
+- link_detection_status: String
+- link_detection_result: JSON" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontSize=9;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="406" width="260" height="206" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_scan_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="612" width="260" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_scan_methods" value="+ create(record: Object): Scan
++ createMany(records: Object[]): Scan[]
++ findById(id: String): Scan
++ findRecent(limit: Integer): Scan[]
++ deleteById(id: String): Boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontSize=9;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="360" y="620" width="260" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_baseline" value="BaselinePage" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="690" y="420" width="240" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_baseline_attrs" value="- id: String
+- site_url: String
+- html_content: Text
+- dom_structure_hash: String
+- visual_hash: String
+- captured_at: DateTime" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontSize=9;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="690" y="446" width="240" height="94" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_baseline_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="690" y="540" width="240" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_baseline_methods" value="+ saveBaseline(url: String, html: Text): Boolean
++ getBaseline(url: String): BaselinePage
++ compareHash(hash: String): Float" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontSize=9;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="690" y="548" width="240" height="52" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_schedule" value="Schedule" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;strokeColor=#000000;fillColor=#ffffff;fontColor=#000000;fontFamily=Arial;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="710" width="240" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_schedule_attrs" value="- id: String
+- name: String
+- target_type: String
+- site_ids: JSON
+- frequency: String
+- time_of_day: String
+- timezone: String
+- status: String
+- is_running: Integer
+- next_run_at: DateTime" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontSize=9;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="60" y="736" width="240" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_schedule_sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="60" y="886" width="240" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="cls_schedule_methods" value="+ create(sched: Object): Schedule
++ update(id: String, data: Object): Boolean
++ findDue(now: DateTime): Schedule[]
++ toggleStatus(id: String): Boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Arial;fontSize=9;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="60" y="894" width="240" height="66" as="geometry"/>
+        </mxCell>
+        <mxCell id="rel_user_scanjob" value="1                        0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;endArrow=none;endFill=0;" edge="1" parent="1" source="cls_user" target="cls_scanjob">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="rel_scanjob_scan" value="1
+
+1..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;endArrow=none;endFill=0;" edge="1" parent="1" source="cls_scanjob" target="cls_scan">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="rel_scan_notif" value="1
+
+0..1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;endArrow=none;endFill=0;" edge="1" parent="1" source="cls_scan" target="cls_notification">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="620" y="480"/>
+              <mxPoint x="800" y="480"/>
+              <mxPoint x="800" y="280"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_site_scan" value="1                        0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;endArrow=none;endFill=0;" edge="1" parent="1" source="cls_site" target="cls_scan">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="rel_site_baseline" value="1
+
+0..1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;endArrow=none;endFill=0;" edge="1" parent="1" source="cls_site" target="cls_baseline">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="630"/>
+              <mxPoint x="180" y="670"/>
+              <mxPoint x="810" y="670"/>
+              <mxPoint x="810" y="600"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel_site_schedule" value="1
+
+0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#000000;fontColor=#000000;fontFamily=Arial;fontSize=10;fontStyle=1;endArrow=none;endFill=0;" edge="1" parent="1" source="cls_site" target="cls_schedule">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

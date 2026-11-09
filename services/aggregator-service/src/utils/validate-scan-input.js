@@ -62,7 +62,24 @@ function validateScanInput(body) {
     }
   }
 
-  return { crawler: body.crawler, baselinesByUrl };
+  let officerEmail = null;
+  if (body.officerEmail !== undefined && body.officerEmail !== null) {
+    if (typeof body.officerEmail !== "string" || !body.officerEmail.trim()) {
+      throw new HttpError(400, "INVALID_INPUT", "Email petugas tidak boleh kosong.");
+    }
+    const trimmed = body.officerEmail.trim().toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
+      throw new HttpError(400, "INVALID_INPUT", "Format email petugas tidak valid.");
+    }
+    officerEmail = trimmed;
+  }
+
+  return {
+    crawler: body.crawler,
+    baselinesByUrl,
+    officerEmail,
+    background: Boolean(body.background),
+  };
 }
 
 module.exports = { validateScanInput };

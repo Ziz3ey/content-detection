@@ -9,6 +9,7 @@ const {
 
 const SCAN_STATUSES = new Set(["success", "failed"]);
 const DETECTION_STATUSES = new Set(["success", "failed", "skipped"]);
+const SCAN_SOURCES = new Set(["MANUAL", "SCHEDULED"]);
 
 class DataValidationError extends TypeError {
   constructor(message) {
@@ -218,6 +219,14 @@ function normalizeScan(scan) {
     );
   }
 
+  const scanSource =
+    scan.scanSource === "SCHEDULED" ? "SCHEDULED" : "MANUAL";
+
+  const officerEmail =
+    typeof scan.officerEmail === "string" && scan.officerEmail.trim().length > 0
+      ? scan.officerEmail.trim().toLowerCase()
+      : null;
+
   return {
     id: scan.id || randomUUID(),
     url,
@@ -231,6 +240,8 @@ function normalizeScan(scan) {
     ),
     title: normalizeOptionalString(scan.title, "title", MAX_TITLE_LENGTH),
     crawlMetadata: normalizeCrawlMetadata(scan.crawlMetadata),
+    scanSource,
+    officerEmail,
     textDetectionStatus: textDetection.status,
     textDetectionResult: textDetection.json,
     defacementDetectionStatus: defacementDetection.status,
@@ -255,6 +266,8 @@ function mapRow(row) {
     title: row.title,
     crawlMetadata:
       row.crawl_metadata === null ? null : JSON.parse(row.crawl_metadata),
+    scanSource: row.scan_source || "MANUAL",
+    officerEmail: row.officer_email || null,
     textDetectionStatus: row.text_detection_status,
     textDetection:
       row.text_detection_result === null
@@ -279,11 +292,13 @@ class ScanRepository {
     this.insertStatement = database.prepare(`
       INSERT INTO scans (
         id, url, scanned_at, crawl_status, http_status, content_type, title, crawl_metadata,
+        scan_source, officer_email,
         text_detection_status, text_detection_result,
         defacement_detection_status, defacement_detection_result,
         link_detection_status, link_detection_result
       ) VALUES (
         @id, @url, @scannedAt, @crawlStatus, @httpStatus, @contentType, @title, @crawlMetadata,
+        @scanSource, @officerEmail,
         @textDetectionStatus, @textDetectionResult,
         @defacementDetectionStatus, @defacementDetectionResult,
         @linkDetectionStatus, @linkDetectionResult
@@ -292,11 +307,15 @@ class ScanRepository {
     this.findByIdStatement = database.prepare(
       "SELECT * FROM scans WHERE id = ?",
     );
+    this.deleteByIdStatement = database.prepare("DELETE FROM scans WHERE id = ?");
     this.findByUrlStatement = database.prepare(
       "SELECT * FROM scans WHERE url = ? ORDER BY scanned_at DESC, id DESC",
     );
     this.findRecentStatement = database.prepare(
       "SELECT * FROM scans ORDER BY scanned_at DESC, id DESC LIMIT ?",
+    );
+    this.findRecentFilteredStatement = database.prepare(
+      "SELECT * FROM scans WHERE scan_source = ? ORDER BY scanned_at DESC, id DESC LIMIT ?",
     );
   }
 
@@ -345,13 +364,33 @@ class ScanRepository {
     }
   }
 
-  findRecent(limit = DEFAULT_RECENT_LIMIT) {
+  deleteById(id) {
+    if (typeof id !== "string" || id.length === 0 || id.length > 128) {
+      throw new DataValidationError(
+        "id must be a non-empty string no longer than 128 characters.",
+      );
+    }
+    try {
+      return this.deleteByIdStatement.run(id).changes > 0;
+    } catch (error) {
+      throw new DataAccessError("Could not delete scan record.", error);
+    }
+  }
+
+  findRecent(limit = DEFAULT_RECENT_LIMIT, options = {}) {
     if (!Number.isInteger(limit) || limit < 1 || limit > MAX_RECENT_LIMIT) {
       throw new DataValidationError(
         `limit must be between 1 and ${MAX_RECENT_LIMIT}.`,
       );
     }
+    const filterSource =
+      options?.scanSource === "MANUAL" || options?.scanSource === "SCHEDULED"
+        ? options.scanSource
+        : null;
     try {
+      if (filterSource) {
+        return this.findRecentFilteredStatement.all(filterSource, limit).map(mapRow);
+      }
       return this.findRecentStatement.all(limit).map(mapRow);
     } catch (error) {
       throw new DataAccessError("Could not read recent scan records.", error);

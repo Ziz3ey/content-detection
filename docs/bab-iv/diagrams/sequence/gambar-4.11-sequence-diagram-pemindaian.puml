@@ -1,0 +1,27 @@
+@startuml
+!theme plain
+autonumber
+actor "Petugas CSIRT" as User
+participant "Dashboard UI" as UI
+participant "Aggregator Service (:3004)" as Agg
+database "SQLite Database" as DB
+participant "Background Worker" as Worker
+
+User -> UI: Input Target URL & Email Petugas, Klik 'Mulai'
+UI -> Agg: POST /api/scans { targetUrl, requestedByEmail, maxPages, maxDepth }
+Agg -> DB: INSERT scans (status='PENDING', requested_by_email)
+DB --> Agg: return scanId
+Agg --> UI: HTTP 202 Accepted { scanId, status='RUNNING' }
+UI --> User: Tampilkan Notifikasi Pemindaian Berjalan (Boleh Tutup Browser)
+
+group Asynchronous Background Scanning
+  Agg -> Worker: executeScan(scanId, requestedByEmail)
+  Worker -> Worker: Perayapan & Deteksi Paralel 3 Layanan
+  Worker -> DB: UPDATE scans SET status='COMPLETED', findings
+  Worker -> Worker: Kirim Email Laporan ke requestedByEmail
+end
+
+UI -> Agg: GET /api/scans/:id (Periodic Polling)
+Agg --> UI: Return Scan Status & Detail Indikasi
+UI --> User: Tampilkan Laporan Hasil Pemindaian Lengkap
+@enduml

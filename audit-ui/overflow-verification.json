@@ -1,0 +1,48 @@
+[
+  {
+    "label": "Landing Desktop (1440px)",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 2473,
+    "hasOverflow": false
+  },
+  {
+    "label": "Landing Small Desktop / Tablet Landscape (1024px)",
+    "width": 1024,
+    "scrollWidth": 1024,
+    "innerWidth": 1024,
+    "scrollHeight": 2631,
+    "hasOverflow": false
+  },
+  {
+    "label": "Landing Tablet Portrait (768px)",
+    "width": 768,
+    "scrollWidth": 768,
+    "innerWidth": 768,
+    "scrollHeight": 3151,
+    "hasOverflow": false
+  },
+  {
+    "label": "Landing Mobile (390px)",
+    "width": 390,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 4277,
+    "hasOverflow": false
+  },
+  {
+    "label": "Login Desktop (1440px)",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "hasOverflow": false
+  },
+  {
+    "label": "Login Mobile (390px)",
+    "width": 390,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "hasOverflow": false
+  }
+]

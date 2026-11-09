@@ -1,14 +1,14 @@
 const { MAX_REQUEST_BYTES } = require("../config/aggregator-config");
 const { HttpError } = require("./http-error");
 
-async function readJsonBody(request) {
+async function readJsonBody(request, maxBytes = MAX_REQUEST_BYTES) {
   const chunks = [];
   let bytesRead = 0;
 
   for await (const chunk of request) {
     const buffer = Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk);
     bytesRead += buffer.length;
-    if (bytesRead > MAX_REQUEST_BYTES) {
+    if (bytesRead > maxBytes) {
       throw new HttpError(
         413,
         "PAYLOAD_TOO_LARGE",

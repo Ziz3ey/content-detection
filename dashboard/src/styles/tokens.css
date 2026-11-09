@@ -1,0 +1,261 @@
+/**
+ * CONTENT DETECTION — INSTITUTIONAL DESIGN TOKENS
+ *
+ * Gaya: Institusional, tenang, informatif, berorientasi data.
+ * Tema terang di seluruh aplikasi.
+ * Sesuai panduan Prompt 2 & 3 (Fondasi Design Tokens & Komponen Dasar).
+ *
+ * PENTING: Nilai warna dalam file ini harus selalu disinkronkan
+ * dengan `dashboard/src/styles/tokens.js`.
+ */
+
+:root {
+  /* ── 1. WARNA NETRAL ── */
+  --color-bg: #F1F3F6;
+  --color-surface: #FFFFFF;
+  --color-surface-muted: #F7F8FA;
+  --color-border: #D5DAE1;
+  --color-border-subtle: #E6E9EE;
+  --color-text: #111C2E;
+  --color-text-secondary: #3F4B5E;
+  --color-text-tertiary: #5B6677;
+  --color-text-disabled: #8A94A3;
+
+  /* ── 2. WARNA MEREK (PRIMARY) ── */
+  --color-primary: #0F3D7A;
+  --color-primary-hover: #0B3063;
+  --color-primary-active: #082549;
+  --color-primary-soft: #E8EFF8;
+  --color-primary-border: #BFD0E8;
+  --color-on-primary: #FFFFFF;
+  --color-sidebar: #0B1F3A;
+  --color-sidebar-hover: #12294B;
+  --color-sidebar-active: #1A3A66;
+  --color-sidebar-text: #C9D3E3;
+  --color-focus-ring: #2F6FD0;
+
+  /* ── 3. AKSEN DAERAH (HEMAT) ── */
+  /* Di-tweak sedikit dari #A66A00 ke #945E00 agar lulus rasio kontras WCAG AA normal text >= 4.5:1 */
+  --color-accent: #945E00;
+  --color-accent-on-dark: #F59E0B;
+  --color-accent-soft: #FBF1DC;
+
+  /* ── 4. STATUS FUNGSIONAL ── */
+  --color-danger: #B3261E;
+  --color-danger-hover: #991B1B;
+  --color-danger-active: #7F1D1D;
+  --color-danger-soft: #FCEBEA;
+  --color-danger-border: #F0B8B4;
+
+  --color-warning: #8A5A00;
+  --color-warning-soft: #FFF4D6;
+  --color-warning-border: #EBD08A;
+
+  --color-success: #1E6B3A;
+  --color-success-soft: #E6F3EA;
+  --color-success-border: #A9D3B6;
+
+  --color-info: #0F3D7A;
+  --color-info-soft: #E8EFF8;
+  --color-info-border: #BFD0E8;
+
+  /* ── 5. WARNA KATEGORI DETEKSI ── */
+  --color-cat-gambling: #8F2D56;
+  --color-cat-gambling-soft: #FDF2F7;
+  --color-cat-gambling-border: #F4B8D1;
+
+  --color-cat-fraud: #945E00;
+  --color-cat-fraud-soft: var(--color-accent-soft);
+  --color-cat-fraud-border: #EBD08A;
+
+  --color-cat-pornography: #5B3F8C;
+  --color-cat-pornography-soft: #F5F0FB;
+  --color-cat-pornography-border: #D8C7ED;
+
+  --color-cat-link: #0F6B7A;
+  --color-cat-link-soft: #E6F6F8;
+  --color-cat-link-border: #A7DDE3;
+
+  --color-cat-defacement: #B3261E;
+  --color-cat-defacement-soft: var(--color-danger-soft);
+  --color-cat-defacement-border: var(--color-danger-border);
+
+  /* ── 6. TIPOGRAFI ── */
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 14px;
+  --text-15: 15px;
+  --text-md: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-28: 28px;
+  --text-3xl: 30px;
+  --text-4xl: 40px;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --leading-tight: 1.25;
+  --leading-snug: 1.4;
+  --leading-normal: 1.55;
+
+  /* ── 7. SPACING (Skala 4px) ── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+
+  /* ── 8. RADII ── */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-full: 9999px;
+
+  /* ── 9. SHADOWS & OVERLAY ── */
+  --shadow-1: 0 1px 2px rgba(16, 24, 40, 0.06);
+  --shadow-overlay: 0 8px 24px rgba(16, 24, 40, 0.16);
+  --color-overlay: rgba(11, 31, 58, 0.55);
+
+  /* ── 10. LAYOUT & KONTROL ── */
+  --sidebar-width: 248px;
+  --sidebar-collapsed-width: 64px;
+  --topbar-height: 56px;
+  --content-max-width: 1280px;
+  --control-height: 36px;
+  --control-height-sm: 30px;
+
+  /* ── 11. MOTION & TRANSITION ── */
+  --duration-fast: 120ms;
+  --duration-base: 180ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  /* ── 12. LEGACY ALIASES — hapus bertahap ────────────────────────────────────
+     Memetakan variabel lama ke token baru terdekat agar kelas lama tetap bekerja
+     tanpa perubahan layout/halaman.
+     ───────────────────────────────────────────────────────────────────────── */
+  /* Netral & Background */
+  --ink: var(--color-text);
+  --ink-soft: var(--color-text-secondary);
+  --muted: var(--color-text-tertiary);
+  --muted-strong: var(--color-text-secondary);
+  --line: var(--color-border-subtle);
+  --line-strong: var(--color-border);
+  --surface: var(--color-surface);
+  --bg: var(--color-bg);
+  --bg-soft: var(--color-surface-muted);
+  --bg-alt: var(--color-surface-muted);
+  --bg-primary: var(--color-bg);
+  --bg-secondary: var(--color-surface);
+  --bg-tertiary: var(--color-surface-muted);
+  --bg-elevated: var(--color-surface);
+
+  /* Brand Navy */
+  --navy-950: var(--color-sidebar);
+  --navy-900: var(--color-sidebar);
+  --navy-800: var(--color-sidebar-hover);
+  --navy-700: var(--color-sidebar-active);
+  --navy-600: var(--color-sidebar-active);
+
+  /* Brand Blue */
+  --blue-900: var(--color-sidebar);
+  --blue-800: var(--color-primary-active);
+  --blue-700: var(--color-primary-active);
+  --blue-600: var(--color-primary-hover);
+  --blue-500: var(--color-primary);
+  --blue-400: var(--color-focus-ring);
+  --blue-300: var(--color-primary-border);
+  --blue-200: var(--color-primary-soft);
+  --blue-100: var(--color-primary-soft);
+  --blue-50: var(--color-primary-soft);
+
+  /* Cyan Accent (dipetakan ke cat-link / focus-ring / primary-border / soft) */
+  --cyan-600: var(--color-cat-link);
+  --cyan-500: var(--color-focus-ring);
+  --cyan-400: var(--color-primary-border);
+  --cyan-100: var(--color-primary-soft);
+
+  /* Status Hijau / Green */
+  --green-700: var(--color-success);
+  --green-600: var(--color-success);
+  --green-500: var(--color-success);
+  --green-400: var(--color-success);
+  --green-200: var(--color-success-border);
+  --green-100: var(--color-success-soft);
+  --green-50: var(--color-success-soft);
+
+  /* Status Kuning / Amber */
+  --amber-700: var(--color-warning);
+  --amber-600: var(--color-warning);
+  --amber-500: var(--color-warning);
+  --amber-400: var(--color-warning-border);
+  --amber-100: var(--color-warning-soft);
+  --amber-50: var(--color-warning-soft);
+
+  /* Status Merah / Red */
+  --red-700: var(--color-danger);
+  --red-600: var(--color-danger);
+  --red-500: var(--color-danger);
+  --red-400: var(--color-danger-border);
+  --red-300: var(--color-danger-border);
+  --red-100: var(--color-danger-soft);
+  --red-50: var(--color-danger-soft);
+
+  /* Aliases Komponen & Teks */
+  --border: var(--color-border);
+  --border-strong: var(--color-border);
+  --border-primary: var(--color-border);
+  --border-subtle: var(--color-border-subtle);
+  --border-focus: var(--color-focus-ring);
+  --card-bg: var(--color-surface);
+  --text-primary: var(--color-text);
+  --text-secondary: var(--color-text-secondary);
+  --text-tertiary: var(--color-text-tertiary);
+  --text-muted: var(--color-text-disabled);
+
+  /* Radii Aliases */
+  --radius-xs: var(--radius-sm);
+  --radius-xl: var(--radius-lg);
+  --radius-2xl: var(--radius-lg);
+
+  /* Shadows Aliases */
+  --shadow-xs: var(--shadow-1);
+  --shadow-sm: var(--shadow-1);
+  --shadow-md: var(--shadow-1);
+  --shadow-lg: var(--shadow-overlay);
+  --shadow-xl: var(--shadow-overlay);
+  --shadow-glow: none;
+  --shadow-glow-cyan: none;
+
+  /* Spacing Aliases */
+  --space-16: var(--space-12);
+  --main-gap: var(--space-6);
+}
+
+/* ── 13. GLOBAL ACCESSIBILITY & MOTION ─────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

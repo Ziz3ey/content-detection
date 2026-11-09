@@ -1,0 +1,37 @@
+@startuml
+!theme plain
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Petugas CSIRT / Admin" as Admin
+actor "Target Website Pemerintah" as Target
+actor "SMTP Server Gmail" as SMTP
+
+rectangle "Sistem Monitoring & Deteksi Indikasi Konten Negatif" {
+  usecase "UC-01: Autentikasi & Login Administrator" as UC1
+  usecase "UC-02: Memulai Pemindaian & Email Petugas" as UC2
+  usecase "UC-03: Menjalankan Perayapan (Web Crawling)" as UC3
+  usecase "UC-04: Mendeteksi Indikasi Teks (Aho-Corasick)" as UC4
+  usecase "UC-05: Mendeteksi Tautan Mencurigakan" as UC5
+  usecase "UC-06: Mendeteksi Defacement Baseline" as UC6
+  usecase "UC-07: Mengirimkan Notifikasi Email" as UC7
+  usecase "UC-08: Menampilkan Riwayat Pemindaian" as UC8
+  usecase "UC-09: Mengelola Daftar Target Website" as UC9
+  usecase "UC-10: Mengunduh Laporan (PDF / CSV)" as UC10
+
+  UC2 ..> UC3 : <<include>>
+  UC3 ..> UC4 : <<include>>
+  UC3 ..> UC5 : <<include>>
+  UC3 ..> UC6 : <<include>>
+  UC2 ..> UC7 : <<include>>
+}
+
+Admin --> UC1
+Admin --> UC2
+Admin --> UC8
+Admin --> UC9
+Admin --> UC10
+
+UC3 --> Target
+UC7 --> SMTP
+@enduml

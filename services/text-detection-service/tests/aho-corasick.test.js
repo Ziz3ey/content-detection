@@ -1,6 +1,11 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const { AhoCorasick, PATTERN_REGISTRY } = require("../src");
+const {
+  AhoCorasick,
+  CATEGORY_PATTERNS,
+  PATTERN_REGISTRY,
+  isWordBoundary,
+} = require("../src");
 
 function createPattern(pattern, category = "gambling") {
   return { pattern, category };
@@ -178,10 +183,36 @@ test("deduplicates identical normalized pattern-category pairs", () => {
   ]);
 });
 
-test("provides the categorized sample pattern registry", () => {
-  assert.deepEqual(PATTERN_REGISTRY, [
-    { pattern: "alpha", category: "gambling" },
-    { pattern: "beta", category: "fraud" },
-    { pattern: "gamma", category: "pornography" },
-  ]);
+test("provides the categorized pattern registry", () => {
+  assert.ok(Array.isArray(PATTERN_REGISTRY));
+  assert.ok(PATTERN_REGISTRY.length > 0);
+  assert.ok(CATEGORY_PATTERNS.gambling.includes("judi online"));
+  assert.ok(CATEGORY_PATTERNS.pornography.includes("video porno"));
+  assert.ok(CATEGORY_PATTERNS.fraud.includes("undian berhadiah"));
+
+  const gamblingPatterns = PATTERN_REGISTRY.filter(
+    (p) => p.category === "gambling",
+  ).map((p) => p.pattern);
+  assert.deepEqual(gamblingPatterns, [...CATEGORY_PATTERNS.gambling]);
 });
+
+test("filters matches by word boundary when option is enabled", () => {
+  const matcher = new AhoCorasick([createPattern("judi", "gambling")]);
+
+  assert.deepEqual(matcher.search("menjudikan", { wordBoundary: true }), []);
+  assert.equal(matcher.search("menjudikan").length, 1);
+
+  assert.deepEqual(
+    matcher.search("situs judi online", { wordBoundary: true }),
+    [{ pattern: "judi", category: "gambling", start: 6, end: 9 }],
+  );
+});
+
+test("isWordBoundary accurately identifies start and end boundaries", () => {
+  const text = "situs judi online";
+  assert.equal(isWordBoundary(text, 6, 9), true);
+  assert.equal(isWordBoundary("menjudulkan", 3, 6), false);
+  assert.equal(isWordBoundary("judika", 0, 3), false);
+  assert.equal(isWordBoundary("judi", 0, 3), true);
+});
+

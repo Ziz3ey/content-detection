@@ -1,0 +1,24 @@
+@startuml
+!theme plain
+autonumber
+participant "Aggregator Worker" as Worker
+participant "Crawler Service (:3001)" as Crawler
+participant "Robots Parser" as Robots
+participant "Target Web Server" as Target
+
+Worker -> Crawler: POST /crawl { targetUrl, maxPages, maxDepth }
+Crawler -> Target: GET /robots.txt
+Target --> Crawler: HTTP 200 (File robots.txt)
+Crawler -> Robots: Parse Disallow & Allow Rules
+Robots --> Crawler: Validator Kepatuhan Aktif
+
+loop Selama Queue Tidak Kosong && Count < maxPages
+  Crawler -> Target: HTTP GET currentUrl (Axios, Timeout 10s)
+  Target --> Crawler: HTTP 200 OK (HTML Document)
+  Crawler -> Crawler: Ekstrak Tautan Internal (<a href>) via Cheerio
+  Crawler -> Crawler: Normalisasi URL & Cek Batas maxDepth
+  Crawler -> Crawler: Tambahkan URL Baru ke BFS Queue
+end
+
+Crawler --> Worker: HTTP 200 OK { totalPages, pages: [ { url, status, html, title } ] }
+@enduml

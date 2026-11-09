@@ -7,7 +7,12 @@
     "node": ">=22"
   },
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "test:email": "node scripts/test-email-notification.js",
+    "test:email:mock": "node scripts/test-email-notification.js --mock",
+    "dev:all": "powershell -File scripts/dev-all.ps1",
+    "dev:all:status": "powershell -File scripts/dev-all.ps1 -Action Status",
+    "dev:all:stop": "powershell -File scripts/dev-all.ps1 -Action Stop"
   },
   "keywords": [],
   "author": "",

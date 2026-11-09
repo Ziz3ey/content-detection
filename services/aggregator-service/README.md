@@ -23,6 +23,23 @@ Crawler dan detector dipanggil melalui HTTP REST. Untuk setiap halaman crawl yan
 
 ## API
 
+### Administrasi sesi
+
+`POST /api/v1/auth/login` menerima `{ "username": "...", "password": "..." }`.
+Kredensial yang benar membuat sesi Admin di memori server dan mengirim cookie
+`HttpOnly`, `SameSite=Strict`; token sesi tidak disimpan di `localStorage`.
+`GET /api/v1/auth/session` memeriksa sesi aktif dan `POST
+/api/v1/auth/logout` menghapusnya. Semua endpoint `/api/v1` selain login dan
+pemeriksaan sesi memerlukan sesi Admin. `GET /health` tetap publik agar
+pemeriksaan kesehatan service tidak berubah.
+
+Sesi berlaku maksimal 8 jam dan berakhir saat service Aggregator dimulai ulang.
+Autentikasi ini ditujukan untuk prototype penelitian: satu akun Admin,
+penyimpanan sesi sementara di memori, tanpa pengelolaan akun atau pemulihan kata
+sandi, serta tanpa pembatasan percobaan login. Gunakan HTTPS dan
+`AUTH_COOKIE_SECURE=true` di lingkungan selain lokal; lakukan hardening
+tambahan sebelum dipakai sebagai sistem produksi.
+
 ### GET /health
 
 Mengembalikan HTTP `200` selama aggregator berjalan. Endpoint ini tidak memanggil downstream sehingga status health tidak berubah saat service detector mati.
@@ -118,6 +135,14 @@ Mengambil riwayat melalui repository SQLite. `limit` opsional, default repositor
 
 Mengambil satu hasil tersimpan. Response menggunakan `{ "success": true, "data": { "scan": {} } }`; scan yang tidak ditemukan menghasilkan HTTP `404`.
 
+### DELETE /api/v1/scans/:id
+
+Menghapus hanya satu record riwayat berdasarkan ID. Endpoint ini mengikuti
+autentikasi Admin yang sama dengan endpoint `/api/v1/scans`; tanpa sesi aktif
+request ditolak dengan HTTP `401`. Penghapusan sukses mengembalikan HTTP `200`
+dengan `{ "success": true, "data": { "deleted": true } }`. ID tidak valid
+menghasilkan HTTP `400` dan record yang tidak ditemukan HTTP `404`.
+
 ## Konfigurasi
 
 Semua URL dan timeout dapat diatur melalui environment variable. `.env.example` berisi nilai lokal; file ini tidak dimuat otomatis dan tidak menyimpan secret.
@@ -126,6 +151,9 @@ Semua URL dan timeout dapat diatur melalui environment variable. `.env.example` 
 | ----------------------------------- | ----------------------- |
 | `PORT`                              | `3004`                  |
 | `DASHBOARD_ORIGIN`                  | `http://localhost:5173` |
+| `ADMIN_USERNAME`                    | wajib diisi              |
+| `ADMIN_PASSWORD_HASH`               | wajib diisi; hash scrypt  |
+| `AUTH_COOKIE_SECURE`                | `true` saat production    |
 | `CRAWLER_SERVICE_URL`               | `http://localhost:3001` |
 | `CRAWLER_TIMEOUT_MS`                | `120000`                |
 | `TEXT_DETECTION_URL`                | `http://localhost:3000` |
@@ -139,6 +167,22 @@ Semua URL dan timeout dapat diatur melalui environment variable. `.env.example` 
 Aggregator tidak melakukan retry. Setiap downstream request memiliki timeout tersendiri. Response non-JSON, malformed, HTTP error, connection failure, dan timeout dikonversi menjadi error service yang aman.
 
 Browser dashboard hanya diizinkan dari origin yang ditetapkan oleh `DASHBOARD_ORIGIN`. Atur ke origin dashboard production (tanpa path) saat frontend dan aggregator berjalan pada origin berbeda.
+
+Buat hash kata sandi tanpa menampilkan kata sandi di terminal atau menyimpan
+kata sandi dalam database:
+
+```powershell
+cd services/aggregator-service
+$env:ADMIN_USERNAME = "admin"
+$env:ADMIN_PASSWORD_HASH = (node .\scripts\hash-admin-password.js)
+$env:AUTH_COOKIE_SECURE = "false"
+npm run start
+```
+
+Skrip meminta kata sandi secara tersembunyi; gunakan kata sandi minimal 12
+karakter. `ADMIN_PASSWORD_HASH` wajib tersedia setiap kali Aggregator dijalankan.
+`.env.example` hanya mendokumentasikan nama variabel dan bukan hash yang dapat
+digunakan.
 
 `/api/v1/analyze` memerlukan URL HTTP/HTTPS, text, HTML, dan `baseline.html` non-kosong. `/api/v1/scan` menerima config crawler dan optional `baselinesByUrl`. URL maksimum 2048 karakter; text maksimum 10000; HTML dan baseline masing-masing maksimum 1 MiB. Body request memiliki batas ukuran terkonfigurasi.
 
@@ -166,7 +210,7 @@ cd services/link-detection-service
 npm run start
 ```
 
-Lalu jalankan aggregator:
+Jalankan Aggregator sesudah mengatur kredensial Admin:
 
 ```powershell
 cd services/aggregator-service
@@ -175,6 +219,9 @@ $env:TEXT_DETECTION_URL = "http://localhost:3000"
 $env:DEFACEMENT_SERVICE_URL = "http://localhost:3002"
 $env:LINK_DETECTION_SERVICE_URL = "http://localhost:3003"
 $env:DATABASE_PATH = "data/scans.sqlite"
+$env:ADMIN_USERNAME = "admin"
+$env:ADMIN_PASSWORD_HASH = (node .\scripts\hash-admin-password.js)
+$env:AUTH_COOKIE_SECURE = "false"
 npm run start
 ```
 

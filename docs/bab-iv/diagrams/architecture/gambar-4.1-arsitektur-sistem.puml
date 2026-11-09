@@ -1,0 +1,32 @@
+@startuml
+!theme plain
+skinparam componentStyle uml2
+
+package "Presentation Layer" {
+  [Pengguna / Petugas CSIRT] as User
+  [Dashboard Web (React 18 / Port 5173)] as Dashboard
+}
+
+package "Orchestration & Gateway" {
+  [Aggregator Service (Port 3004)] as Aggregator
+  database "SQLite Database" as DB
+  [SMTP Google Mail Server] as SMTP
+}
+
+package "Microservices Worker" {
+  [Crawler Service (Port 3001)] as Crawler
+  [Text Detection Service (Port 3000)] as TextDet
+  [Link Detection Service (Port 3003)] as LinkDet
+  [Defacement Service (Port 3002)] as DefDet
+}
+
+User <--> Dashboard : HTTP (Port 5173)
+Dashboard <--> Aggregator : REST API (JSON)
+Aggregator <--> DB : SQL Query (better-sqlite3)
+Aggregator --> SMTP : SMTP Port 587 (Nodemailer)
+
+Aggregator <--> Crawler : POST /api/v1/crawl
+Aggregator <--> TextDet : POST /api/v1/detect (Aho-Corasick)
+Aggregator <--> LinkDet : POST /api/v1/detect (Heuristik)
+Aggregator <--> DefDet : POST /api/v1/detect (Baseline Hash)
+@enduml

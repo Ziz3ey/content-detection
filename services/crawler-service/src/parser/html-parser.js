@@ -43,6 +43,14 @@ function parseHtml(html) {
     links.push($(element).attr("href"));
   });
 
+  // Ekstraksi atribut alt dan title gambar agar teks pada foto dapat dianalisis Aho-Corasick
+  $("img[alt], img[title]").each((_index, element) => {
+    const alt = $(element).attr("alt");
+    const imgTitle = $(element).attr("title");
+    if (alt && alt.trim()) $(element).after(` ${alt.trim()} `);
+    if (imgTitle && imgTitle.trim()) $(element).after(` ${imgTitle.trim()} `);
+  });
+
   $("script, style, noscript, template").remove();
   const body = $("body");
   body.find("br").replaceWith(" ");

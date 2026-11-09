@@ -1,0 +1,18 @@
+@startuml
+!theme plain
+autonumber
+participant "Aggregator Worker" as Worker
+participant "Link Detection Service (:3003)" as LinkSvc
+participant "Cheerio HTML Parser" as Parser
+participant "Rule & Domain Engine" as Engine
+
+Worker -> LinkSvc: POST /detect/links { url, html }
+LinkSvc -> Parser: Ekstrak seluruh elemen <a>, <iframe>, <form>, <script>
+Parser --> LinkSvc: Array Hyperlink beserta Atribut & Inline Style
+LinkSvc -> Engine: evaluateLinks(links, baseDomain)
+Engine -> Engine: Filter Tautan Eksternal (Outbound Non-Government)
+Engine -> Engine: Periksa TLD Berisiko (.top, .xyz, .icu, .vip, .tk)
+Engine -> Engine: Deteksi Hidden Link (display:none, visibility:hidden)
+Engine --> LinkSvc: Daftar Temuan Tautan Mencurigakan
+LinkSvc --> Worker: HTTP 200 OK { hasIndication, totalLinks, suspiciousLinks: [ ... ] }
+@enduml

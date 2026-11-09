@@ -69,10 +69,12 @@ test("GET /health reports service health", async () => {
 });
 
 test("POST /api/v1/detect returns actual categorized matches", async () => {
-  const text = "ALPHA and beta";
+  const text = "SLOT GACOR dan undian berhadiah";
   const response = await postJson({ text });
   const payload = await response.json();
-  const actualMatches = new AhoCorasick(PATTERN_REGISTRY).search(text);
+  const actualMatches = new AhoCorasick(PATTERN_REGISTRY).search(text, {
+    wordBoundary: true,
+  });
   const expectedCategories = DETECTION_CATEGORIES.flatMap((category) => {
     const matches = actualMatches
       .filter((match) => match.category === category)
@@ -177,7 +179,7 @@ test("returns detected false when no registered pattern matches", async () => {
 });
 
 test("groups a matching fixture under its configured category", async () => {
-  const response = await postJson({ text: "gamma" });
+  const response = await postJson({ text: "bokep" });
   const payload = await response.json();
 
   assert.equal(response.status, 200);
@@ -185,20 +187,20 @@ test("groups a matching fixture under its configured category", async () => {
   assert.deepEqual(payload.data.categories, [
     {
       category: "pornography",
-      matches: [{ pattern: "gamma", start: 0, end: 4 }],
+      matches: [{ pattern: "bokep", start: 0, end: 4 }],
     },
   ]);
 });
 
 test("normalizes case and surrounding whitespace through the full API flow", async () => {
-  const response = await postJson({ text: "  ALPHA  " });
+  const response = await postJson({ text: "  JUDI  " });
   const payload = await response.json();
 
   assert.equal(response.status, 200);
   assert.deepEqual(payload.data.categories, [
     {
       category: "gambling",
-      matches: [{ pattern: "alpha", start: 0, end: 4 }],
+      matches: [{ pattern: "judi", start: 0, end: 3 }],
     },
   ]);
 });
@@ -231,7 +233,7 @@ test("rejects text longer than the configured maximum", async () => {
 });
 
 test("accepts text exactly at the configured maximum", async () => {
-  const text = `alpha${"x".repeat(MAX_TEXT_LENGTH - "alpha".length)}`;
+  const text = `judi ${"x".repeat(MAX_TEXT_LENGTH - "judi ".length)}`;
   const response = await postJson({ text });
   const payload = await response.json();
 
@@ -240,7 +242,7 @@ test("accepts text exactly at the configured maximum", async () => {
   assert.deepEqual(payload.data.categories, [
     {
       category: "gambling",
-      matches: [{ pattern: "alpha", start: 0, end: 4 }],
+      matches: [{ pattern: "judi", start: 0, end: 3 }],
     },
   ]);
 });

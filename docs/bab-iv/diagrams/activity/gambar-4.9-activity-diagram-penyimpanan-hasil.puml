@@ -1,0 +1,13 @@
+@startuml
+!theme plain
+start
+:Kumpulkan Hasil Seluruh Layanan Deteksi;
+:Buka Transaksi SQLite;
+:Simpan Ringkasan ke Tabel 'scans';
+:Simpan Rincian ke Tabel 'scan_pages';
+:Simpan Temuan ke Tabel 'scan_findings';
+:Commit Transaksi (ACID);
+:Update Status Job Menjadi 'COMPLETED';
+:Kirim Data ke Dashboard via Polling API;
+stop
+@enduml

@@ -14,14 +14,67 @@ const { isAllowedByRobots, parseRobotsTxt } = require("./robots-txt");
 
 function errorDetails(error) {
   if (error.name === "TimeoutError" || error.name === "AbortError") {
-    return { code: "REQUEST_TIMEOUT", message: "Request timeout." };
+    return {
+      code: "REQUEST_TIMEOUT",
+      message: "Waktu permintaan habis (timeout). Server target tidak memberikan respons dalam batas waktu.",
+    };
   }
 
   if (error instanceof CrawlerError) {
+    if (error.code === "HOST_NOT_ALLOWED") {
+      return {
+        code: "HOST_NOT_ALLOWED",
+        message: "Host URL berada di luar daftar domain yang diizinkan (allowed hosts).",
+      };
+    }
+    if (error.code === "SSRF_BLOCKED") {
+      return {
+        code: "SSRF_BLOCKED",
+        message: "Akses ke host diblokir oleh perlindungan SSRF (mengarah ke alamat IP privat/terbatas).",
+      };
+    }
+    if (error.code === "RESPONSE_TOO_LARGE") {
+      return {
+        code: "RESPONSE_TOO_LARGE",
+        message: "Ukuran respons halaman melebihi batas maksimum yang diizinkan.",
+      };
+    }
     return { code: error.code, message: error.message };
   }
 
-  return { code: "REQUEST_FAILED", message: "Request failed." };
+  const causeCode = error.cause?.code || error.code;
+  if (causeCode === "ECONNREFUSED") {
+    return {
+      code: "CONNECTION_REFUSED",
+      message: "Koneksi ke host ditolak (connection refused). Server target sedang tidak aktif.",
+    };
+  }
+  if (causeCode === "ENOTFOUND") {
+    return {
+      code: "HOST_UNREACHABLE",
+      message: "Nama domain host tidak ditemukan pada DNS (host unreachable).",
+    };
+  }
+  if (causeCode === "ETIMEDOUT" || causeCode === "ECONNRESET") {
+    return {
+      code: "REQUEST_TIMEOUT",
+      message: "Koneksi terputus atau batas waktu permintaan habis (timeout).",
+    };
+  }
+  if (causeCode === "EHOSTUNREACH" || causeCode === "ENETUNREACH") {
+    return {
+      code: "HOST_UNREACHABLE",
+      message: "Jaringan atau host tujuan tidak dapat dijangkau.",
+    };
+  }
+
+  return {
+    code: "REQUEST_FAILED",
+    message:
+      error.message && error.message !== "fetch failed"
+        ? error.message
+        : "Gagal melakukan permintaan HTTP ke server target.",
+  };
 }
 
 function createFailedPage(url, depth, error, status = null, contentType = "") {
@@ -104,7 +157,20 @@ async function crawl(config, dependencies = {}) {
       if (response.status === 404 || response.status === 410) {
         policy = { available: true, rules: [] };
       } else if (!response.ok) {
-        policy = { available: false, rules: [] };
+        const isAccessDenied = response.status === 403 || response.status === 401;
+        policy = {
+          available: false,
+          rules: [],
+          status: response.status,
+          error: {
+            code: "ROBOTS_UNAVAILABLE",
+            reason: isAccessDenied ? "ACCESS_DENIED" : "HTTP_ERROR",
+            status: response.status,
+            message: isAccessDenied
+              ? `Akses ke robots.txt ditolak oleh server target (HTTP ${response.status}).`
+              : `Pemeriksaan robots.txt gagal karena server mengembalikan HTTP ${response.status}.`,
+          },
+        };
       } else {
         policy = {
           available: true,
@@ -114,7 +180,32 @@ async function crawl(config, dependencies = {}) {
     } catch (error) {
       const details = errorDetails(error);
       logFailure(logger, `${new URL(pageUrl).origin}/robots.txt`, details);
-      policy = { available: false, rules: [] };
+      let robotsMsg = `Pemeriksaan robots.txt gagal: ${details.message}`;
+      if (details.code === "CONNECTION_REFUSED") {
+        robotsMsg =
+          "Host target tidak dapat dijangkau (koneksi ditolak saat memeriksa robots.txt). Server target mungkin tidak aktif.";
+      } else if (details.code === "HOST_UNREACHABLE") {
+        robotsMsg =
+          "Host target tidak ditemukan pada DNS saat memeriksa robots.txt (host unreachable).";
+      } else if (details.code === "REQUEST_TIMEOUT") {
+        robotsMsg =
+          "Waktu permintaan robots.txt habis (timeout). Server target tidak memberikan respons.";
+      } else if (details.code === "SSRF_BLOCKED") {
+        robotsMsg =
+          "Pemeriksaan robots.txt diblokir oleh perlindungan SSRF (mengarah ke IP privat/terbatas).";
+      } else if (details.code === "HOST_NOT_ALLOWED") {
+        robotsMsg =
+          "Host robots.txt berada di luar daftar domain yang diizinkan (allowed hosts).";
+      }
+      policy = {
+        available: false,
+        rules: [],
+        error: {
+          code: "ROBOTS_UNAVAILABLE",
+          reason: details.code,
+          message: robotsMsg,
+        },
+      };
     }
 
     robotsCache.set(hostname, policy);
@@ -131,12 +222,19 @@ async function crawl(config, dependencies = {}) {
 
     const robotsPolicy = await robotsPolicyFor(current.url);
     if (!robotsPolicy.available) {
-      const error = {
+      const error = robotsPolicy.error || {
         code: "ROBOTS_UNAVAILABLE",
-        message: "robots.txt could not be checked; the host was blocked.",
+        message: "Pemeriksaan robots.txt gagal; perayapan dihentikan demi kepatuhan aturan situs.",
       };
       logFailure(logger, current.url, error);
-      results.push(createFailedPage(current.url, current.depth, error));
+      results.push(
+        createFailedPage(
+          current.url,
+          current.depth,
+          error,
+          robotsPolicy.status || null,
+        ),
+      );
       completedUrls.add(current.url);
       continue;
     }
@@ -144,7 +242,8 @@ async function crawl(config, dependencies = {}) {
     if (!isAllowedByRobots(current.url, robotsPolicy.rules)) {
       const error = {
         code: "ROBOTS_DISALLOWED",
-        message: "The requested path is disallowed by robots.txt.",
+        reason: "ACCESS_DENIED",
+        message: "Akses ke URL ini dilarang oleh aturan robots.txt situs target.",
       };
       results.push(createFailedPage(current.url, current.depth, error));
       completedUrls.add(current.url);

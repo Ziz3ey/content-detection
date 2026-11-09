@@ -1,0 +1,17 @@
+@startuml
+!theme plain
+start
+:Terima Request Crawling;
+:Inisialisasi Antrean URL;
+if (Host Termasuk Whitelist?) then (Ya)
+  :Cek Direktif Robots.txt;
+  :Fetch Konten Halaman;
+  :Normalisasi URL & Redirect;
+  :Parse DOM (Teks, Tag Gambar, Link);
+  :Kirim Hasil Halaman ke Aggregator;
+  stop
+else (Tidak)
+  :Tolak Request (SSRF Protection);
+  stop
+endif
+@enduml

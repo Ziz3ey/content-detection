@@ -1,0 +1,114 @@
+[
+  {
+    "label": "13. Landing Page — Desktop (1440px) Verifikasi Hero Card & Footer",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 2473,
+    "hasOverflow": false
+  },
+  {
+    "label": "14. Landing Page — Layar Sedang (1024px) Verifikasi Tata Letak",
+    "width": 1024,
+    "scrollWidth": 1024,
+    "innerWidth": 1024,
+    "scrollHeight": 2631,
+    "hasOverflow": false
+  },
+  {
+    "label": "1. Tab Ringkasan — Desktop (1440px) Sidebar Penuh",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 1376,
+    "hasOverflow": false
+  },
+  {
+    "label": "2. Tab Ringkasan — Desktop (1440px) Sidebar Ciut",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 1376,
+    "hasOverflow": false
+  },
+  {
+    "label": "3. Tab Ringkasan — Desktop (1440px) Menu Notifikasi Terbuka",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 1376,
+    "hasOverflow": false
+  },
+  {
+    "label": "4. Tab Ringkasan — Desktop (1440px) Menu Notifikasi Kosong",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 1376,
+    "hasOverflow": false
+  },
+  {
+    "label": "5. Tab Riwayat — Desktop (1440px) Verifikasi Konten Utuh",
+    "width": 1440,
+    "scrollWidth": 1440,
+    "innerWidth": 1440,
+    "scrollHeight": 900,
+    "hasOverflow": false
+  },
+  {
+    "label": "6. Tab Ringkasan — Layar Sedang (1024px) Default Ciut",
+    "width": 1024,
+    "scrollWidth": 1024,
+    "innerWidth": 1024,
+    "scrollHeight": 2026,
+    "hasOverflow": false
+  },
+  {
+    "label": "7. Tab Ringkasan — Layar Sedang (1024px) Sidebar Overlay Dilebarkan",
+    "width": 1024,
+    "scrollWidth": 1024,
+    "innerWidth": 1024,
+    "scrollHeight": 2026,
+    "hasOverflow": false
+  },
+  {
+    "label": "8. Tab Ringkasan — Tablet Portrait (768px) Laci Tertutup",
+    "width": 768,
+    "scrollWidth": 768,
+    "innerWidth": 768,
+    "scrollHeight": 2026,
+    "hasOverflow": false
+  },
+  {
+    "label": "9. Tab Ringkasan — Tablet Portrait (768px) Laci Off-Canvas Terbuka",
+    "width": 768,
+    "scrollWidth": 768,
+    "innerWidth": 768,
+    "scrollHeight": 2026,
+    "hasOverflow": false
+  },
+  {
+    "label": "10. Tab Ringkasan — Ponsel (390px) Laci Tertutup",
+    "width": 390,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 2584,
+    "hasOverflow": false
+  },
+  {
+    "label": "11. Tab Ringkasan — Ponsel (390px) Laci Off-Canvas Terbuka",
+    "width": 390,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 2584,
+    "hasOverflow": false
+  },
+  {
+    "label": "12. Tab Ringkasan — Ponsel (390px) Menu Notifikasi Responsif",
+    "width": 390,
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 2584,
+    "hasOverflow": false
+  }
+]
